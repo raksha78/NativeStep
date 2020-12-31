@@ -1,14 +1,36 @@
-#!/bin/bash -e
+$ErrorActionPreference = "Stop"
 
-export NVM_VERSION=v0.35.3
-echo "================= Installing NVM "$NVM_VERSION" ================"
-curl -sS https://raw.githubusercontent.com/creationix/nvm/"$NVM_VERSION"/install.sh | bash
+# Install choco
+Set-ExecutionPolicy Bypass -Scope Process -Force
+$env:chocolateyUseWindowsCompression = 'true'
+iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
-# Set NVM_DIR so the installations go to the right place
-export NVM_DIR="/root/.nvm"
+$env:ChocolateyInstall = Convert-Path "$((Get-Command choco).path)\..\.."
+Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 
-NODE_VERSION=8.17.0
-NPM_VERSION=6.14.5
-echo "=============== Installing Node $NODE_VERSION ============="
-. /root/.nvm/nvm.sh && nvm install $NODE_VERSION
-npm install npm@$NPM_VERSION -g
+choco config set --name="'stopOnFirstPackageFailure'" --value="'true'"
+
+function Write-PackageInstall($package) {
+  Write-Output ""
+  Write-Output "----------------------------------------------"
+  Write-Output "Installing $package"
+  Write-Output "----------------------------------------------"
+  Write-Output ""
+}
+function Install-ChocoPackage($package, $options) {
+  Write-PackageInstall $package
+  choco install -y $package $options
+  if ($LastExitCode -ne 0) {
+     throw 'Error installing with Chocolatey'
+  }
+}
+
+# Installing Python 3
+Install-ChocoPackage python3
+
+refreshenv
+
+# Installing Git
+$GIT_VERSION = "2.27.0"
+Install-ChocoPackage  -package git -options --version=$GIT_VERSION
+Update-SessionEnvironment
