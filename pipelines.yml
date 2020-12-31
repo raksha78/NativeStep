@@ -13,7 +13,7 @@ pipelines:
       - name: buildStep
         type: DockerBuild
         configuration:
-#           dockerFileLocation: <string> # optional, defaults to .
+          dockerFileLocation: <string> # optional, defaults to .
 #           dockerFileName: <string>     # optional, defaults to Dockerfile
           dockerImageName: dev.jfrog-pipelines.com/rak_docker/img   
           dockerImageTag:  ${run_number}    
