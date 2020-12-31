@@ -12,6 +12,13 @@ resources:
       sourceArtifactory: art_v
       buildName: docker_rak_linux
       buildNumber: 1
+  - name: output
+     type: Image
+     configuration:
+       registry: art_v
+       sourceRepository: rak_docker   # required if registry is Artifactory
+       imageName: dev.jfrog-pipelines.com/rak_docker/img
+       imageTag: test_latest
 
 pipelines: 
   - name: dockerPipe
@@ -36,4 +43,4 @@ pipelines:
           inputSteps:
             - name: buildStep  
           outputResources:
-            - name: docker_rak_linux
+            - name: output
