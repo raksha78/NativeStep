@@ -6,6 +6,12 @@ resources:
       path: raksha78/NativeStep
       branches:
         include: ^linux$
+  - name: docker_rak_linux
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art_v
+      buildName: docker_rak_linux
+      buildNumber: 1
 
 pipelines: 
   - name: dockerPipe
@@ -30,4 +36,4 @@ pipelines:
           inputSteps:
             - name: buildStep  
           outputResources:
-            - name: docker_rak
+            - name: docker_rak_linux
