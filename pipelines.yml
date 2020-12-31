@@ -13,8 +13,8 @@ resources:
       buildName: docker_rak_linux
       buildNumber: 1
   - name: output
-     type: Image
-     configuration:
+    type: Image
+    configuration:
        registry: art_v
        sourceRepository: rak_docker   # required if registry is Artifactory
        imageName: dev.jfrog-pipelines.com/rak_docker/img
