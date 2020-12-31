@@ -33,6 +33,7 @@ pipelines:
         configuration:
           targetRepository: rak_docker 
           affinityGroup: Together
+          autoPublishBuildInfo: true
           integrations:
             - name: art_v 
           inputSteps:
