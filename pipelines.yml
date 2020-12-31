@@ -5,7 +5,7 @@ resources:
       gitProvider: raksha78_github                     
       path: raksha78/NativeStep
       branches:
-        include: linux
+        include: ^linux$
 
 pipelines: 
   - name: dockerPipe
