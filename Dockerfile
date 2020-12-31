@@ -1,5 +1,5 @@
-FROM alpine:3.7
+ FROM mcr.microsoft.com/windows/servercore:ltsc2019
+ SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
-ADD . /tmp
-
-RUN apk add --no-cache bash
+ ADD ./install.ps1 C:/Users/ContainerAdministrator/AppData/Local/Temp
+ RUN C:/Users/ContainerAdministrator/AppData/Local/Temp/install.ps1
