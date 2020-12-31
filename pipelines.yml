@@ -1,0 +1,21 @@
+resources:
+  - name: repo
+    type: GitRepo
+    configuration:
+      gitProvider: raksha78_github                     
+      path: raksha78/NativeStep
+      branches:
+        include: master
+
+pipelines: 
+  - name: dockerPipe
+    steps:
+      - name: buildStep
+        type: DockerBuild
+        configuration:
+#           dockerFileLocation: <string> # optional, defaults to .
+#           dockerFileName: <string>     # optional, defaults to Dockerfile
+          dockerImageName: dev.jfrog-pipelines.com/rak_docker/img   
+          dockerImageTag:  ${run_number}    
+          inputResources:
+              - name: repo  
