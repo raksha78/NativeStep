@@ -5,10 +5,12 @@ resources:
       gitProvider: raksha78_github                     
       path: raksha78/NativeStep
       branches:
-        include: ^linux$
+        include: ^powershell$
 
 pipelines: 
   - name: dockerPipe
+    configuration:
+      nodePool: win_2019
     steps:
       - name: buildStep
         type: DockerBuild
