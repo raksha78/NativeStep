@@ -47,13 +47,13 @@ pipelines:
             - name: output
             
             
-       - name: pushStep2
-         type: DockerPush
-         configuration:
+      - name: pushStep2
+        type: DockerPush
+        configuration:
           targetRepository: rak_docker 
           affinityGroup: Together
 #           autoPublishBuildInfo: true
           integrations:
             - name: art_v 
-           inputResources:
+          inputResources:
               - name: output
