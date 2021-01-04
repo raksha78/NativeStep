@@ -14,13 +14,22 @@ pipelines:
       - name: build_go
         type: GoBuild
         configuration:
+          environmentVariables:
+            JFROG_CLI_BUILD_NAME: go_example_build_publish
           sourceLocation: .
           repository: go_local
           outputLocation: /tmp/dist
-          outputFile: linux_go
+          outputFile: hello_gb
           inputResources:
             - name: go_example
           integrations:
             - name: art_v
+        execution:
+          onStart:
+            - buildDir=$(find_resource_variable $inputGitRepoResourceName resourcePath)
+            - echo "******** buildDir - $buildDir"
+            - pushd $buildDir
+            - go get -insecure
+            - popd
        
       
