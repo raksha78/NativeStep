@@ -1,0 +1,35 @@
+resources:
+  - name: go_example
+    type: GitRepo
+    configuration:
+      path: raksha78/NativeStep
+      branches:
+        include: powershell
+      gitProvider: raksha78_github
+      
+  - name: go_rak
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art_v
+         
+
+pipelines:
+  - name: go_build_pipeline
+    configuration:
+      nodePool: win_2019
+    steps:
+      - name: publish_go_module
+        type: GoPublishModule
+        configuration:
+          environmentVariables:
+            JFROG_CLI_BUILD_NAME: go_example_module_publish
+          sourceLocation: .
+          version: v0.0.0
+          targetRepository: go_local
+          autoPublishBuildInfo: true
+          integrations:
+            - name: art_v
+          inputResources:
+            - name: go_example
+          outputResources:
+            - name: go_rak
