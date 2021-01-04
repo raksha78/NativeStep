@@ -19,17 +19,18 @@ pipelines:
           sourceLocation: .
           repository: go_local
 #           outputLocation: /tmp/dist
-          goCommand: build -o /tmp/dist/hello_output
+          
           outputFile: hello_output
+          goCommand: build -o /tmp/dist/hello_output
           inputResources:
             - name: go_example
           integrations:
             - name: art_v
         execution:
            onStart:
-              - echo $step_tmp_dir
-              - printenv
-              - echo $GOPATH
+#               - echo $step_tmp_dir
+#               - printenv
+#               - echo $GOPATH
 #           onStart:
               - buildDir=$(find_resource_variable $inputGitRepoResourceName resourcePath)
               - echo "******** buildDir - $buildDir"
