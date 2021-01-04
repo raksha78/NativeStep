@@ -33,6 +33,6 @@ pipelines:
             - popd
           onComplete:
             - echo "____________completed"
-            - ls 
-            - cat /tmp/dist/hello_output
+            - cd /tmp/dist
+            - ls
       
