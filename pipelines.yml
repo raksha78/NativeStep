@@ -1,11 +1,11 @@
-# resources:
-#   - name: repo
-#     type: GitRepo
-#     configuration:
-#       gitProvider: raksha78_github                     
-#       path: raksha78/NativeStep
-#       branches:
-#         include: ^linux$
+resources:
+  - name: repo
+    type: GitRepo
+    configuration:
+      gitProvider: raksha78_github                     
+      path: raksha78/NativeStep
+      branches:
+        include: ^linux$
 #   - name: docker_rak_linux
 #     type: BuildInfo
 #     configuration:
@@ -21,18 +21,18 @@
 #        imageTag: test_latest
 #        autoPull: true
 
-# pipelines: 
-#   - name: dockerPipe
-#     steps:
-#       - name: buildStep
-#         type: DockerBuild
-#         configuration:
-#           dockerFileLocation: . # optional, defaults to .
+pipelines: 
+  - name: dockerPipe
+    steps:
+      - name: buildStep
+        type: DockerBuild
+        configuration:
+          dockerFileLocation: . # optional, defaults to .
 #           dockerFileName: Dockerfile    # optional, defaults to Dockerfile
-#           dockerImageName: dev.jfrog-pipelines.com/rak_docker/img   
-#           dockerImageTag:  ${run_number}    
-#           inputResources:
-#               - name: repo  
+          dockerImageName: dev.jfrog-pipelines.com/rak_docker/img   
+          dockerImageTag:  ${run_number}    
+          inputResources:
+              - name: repo  
 #       - name: pushStep
 #         type: DockerPush
 #         configuration:
