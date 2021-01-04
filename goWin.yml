@@ -22,7 +22,7 @@ pipelines:
 #           resolverRepo: go_local
           repository: go_local
 #           noRegistry: true
-#           outputLocation: /tmp/dist
+          outputLocation: /tmp/dist
           outputFile: hello_output
           goCommand: build -o /tmp/dist/hello_output
           inputResources:
