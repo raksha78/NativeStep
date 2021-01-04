@@ -18,8 +18,7 @@ pipelines:
             JFROG_CLI_BUILD_NAME: go_example_build_publish
           sourceLocation: .
           repository: go_local
-#           outputLocation: /tmp/dist
-          
+          outputLocation: /tmp/dist
           outputFile: hello_output
           goCommand: build -o /tmp/dist/hello_output
           inputResources:
@@ -28,22 +27,18 @@ pipelines:
             - name: art_v
         execution:
            onStart:
-#               - echo $step_tmp_dir
-#               - printenv
-#               - echo $GOPATH
-#           onStart:
               - buildDir=$(find_resource_variable $inputGitRepoResourceName resourcePath)
               - echo "******** buildDir - $buildDir"
               - pushd $buildDir
               - go get -insecure
               - popd
-           onComplete:
-#             - echo "____________completed"
-#             - cd "$(dirname "$0")"
-#             - ls 
-#             - cd output
-#             - ls
+#            onComplete:
+# #             - echo "____________completed"
+# #             - cd "$(dirname "$0")"
+# #             - ls 
+# #             - cd output
+# #             - ls
             
-              - cd /tmp/dist
-              - ls
+#               - cd /tmp/dist
+#               - ls
       
