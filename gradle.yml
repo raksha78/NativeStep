@@ -4,6 +4,10 @@ resources:
     configuration:
       gitProvider: raksha78_github
       path: raksha78/project-examples
+  - name: gradle_rak
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art_v
       
 pipelines:
   - name: gradle_pipeline
@@ -14,14 +18,17 @@ pipelines:
           sourceLocation: gradle-examples/gradle-example-minimal
           gradleCommand: clean artifactoryPublish -b build.gradle
           configFileLocation: .
+          autoPublishBuildInfo: true
           configFileName: gradle-art-config
           inputResources:
             - name: gradle_repository
           integrations:
             - name: art_v
+          outputResources:
+            - name: gradle_rak
         execution:
           onStart:
             - javac -version
             - gradle --version
-            
+        
     
