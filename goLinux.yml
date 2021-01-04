@@ -36,13 +36,13 @@ pipelines:
 #             - pushd $buildDir
 #             - go get -insecure
 #             - popd
-#           onComplete:
+           onComplete:
 #             - echo "____________completed"
 #             - cd "$(dirname "$0")"
 #             - ls 
 #             - cd output
 #             - ls
             
-            - cd /tmp/dist
-            - ls
+              - cd /tmp/dist
+              - ls
       
