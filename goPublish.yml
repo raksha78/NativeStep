@@ -56,7 +56,7 @@ pipelines:
           targetRepository: go_local
           integrations:
             - name: art_v
-          outputResources:
-            - name: go_rak
+#           outputResources:
+#             - name: go_rak
              
      
