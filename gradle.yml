@@ -1,0 +1,26 @@
+resources:
+  - name: gradle_repo
+    type: GitRepo
+    configuration:
+      gitProvider: rak_github
+      path: raksha78/project-examples
+      
+pipelines:
+  - name: gradle_pipeline
+    steps:
+      - name: gradle_build_step
+        type: GradleBuild
+        configuration:
+          sourceLocation: gradle-examples/gradle-example-minimal
+          configFileLocation: .
+          configFileName: gradle-art-config
+          inputResources:
+            - name: gradle_repo
+          integrations:
+            - name: art_v
+        execution:
+          onStart:
+            - javac -version
+            - gradle --version
+            
+    
