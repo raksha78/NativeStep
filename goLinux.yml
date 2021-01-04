@@ -33,6 +33,8 @@ pipelines:
             - popd
           onComplete:
             - echo "____________completed"
-            - cd /tmp/dist
+            - cd step_workspace_dir/GoBuild 
             - ls
+#             - cd /tmp/dist
+#             - ls
       
