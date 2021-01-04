@@ -4,7 +4,7 @@ resources:
     configuration:
       path: raksha78/NativeStep
       branches:
-        include: linux
+        include: powershell
       gitProvider: raksha78_github
        
 
