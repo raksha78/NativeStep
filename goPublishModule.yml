@@ -1,0 +1,62 @@
+resources:
+  - name: go_example
+    type: GitRepo
+    configuration:
+      path: raksha78/NativeStep
+      branches:
+        include: linux
+      gitProvider: raksha78_github
+      
+  - name: go_rak
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art_v
+         
+
+pipelines:
+  - name: go_build_pipeline
+    steps:
+      - name: build_go
+        type: GoBuild
+        configuration:
+            environmentVariables:
+                JFROG_CLI_BUILD_NAME: go_example_build_publish
+            sourceLocation: .
+    #           resolverRepo: go_local
+            repository: go_local
+    #           noRegistry: true
+            outputLocation: /tmp/dist
+            outputFile: hello_output
+    #         goCommand: build -o /tmp/dist/hello_output
+            inputResources:
+                - name: go_example
+            integrations:
+                - name: art_v
+        execution:
+            onStart:
+                - buildDir=$(find_resource_variable $inputGitRepoResourceName resourcePath)
+                - echo "******** buildDir - $buildDir"
+                - pushd $buildDir
+                - go get -insecure
+                - popd
+            onComplete:
+                - pwd
+                - cd workspace
+                - cd tmp
+                - ls
+                
+      - name: publish_go_module
+        type: GoPublishModule
+        configuration:
+          environmentVariables:
+            JFROG_CLI_BUILD_NAME: go_example_module_publish
+          sourceLocation: .
+          version: v0.0.0
+          targetRepository: go_local
+#           autoPublishBuildInfo: true
+          integrations:
+            - name: art_v
+          inputResources:
+            - name: go_example
+#           outputResources:
+#             - name: go_rak
