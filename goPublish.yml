@@ -54,7 +54,7 @@ pipelines:
             - name: build_go
           targetRepository: go_local
           integrations:
-#             - name: art_v
+            - name: art_v
 #           outputResources:
 #             - name: go_rak
              
