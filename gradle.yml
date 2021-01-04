@@ -11,10 +11,10 @@ pipelines:
       - name: gradle_build_step
         type: GradleBuild
         configuration:
-#           sourceLocation: gradle-examples/gradle-example-minimal
+          sourceLocation: gradle-examples/gradle-example-minimal
           gradleCommand: clean artifactoryPublish -b build.gradle
-          configFileLocation: .
-          configFileName: gradle-art-config
+#           configFileLocation: .
+#           configFileName: gradle-art-config
           inputResources:
             - name: gradle_repository
           integrations:
