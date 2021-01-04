@@ -26,18 +26,18 @@ pipelines:
           integrations:
             - name: art_v
         execution:
-         onStart:
-            - echo $step_tmp_dir
-            - printenv
-            - echo $GOPATH
+           onStart:
+              - echo $step_tmp_dir
+              - printenv
+              - echo $GOPATH
 #           onStart:
 #             - buildDir=$(find_resource_variable $inputGitRepoResourceName resourcePath)
 #             - echo "******** buildDir - $buildDir"
 #             - pushd $buildDir
 #             - go get -insecure
 #             - popd
-          onComplete:
-            - echo "____________completed"
+#           onComplete:
+#             - echo "____________completed"
 #             - cd "$(dirname "$0")"
 #             - ls 
 #             - cd output
