@@ -31,7 +31,7 @@ pipelines:
 #           noRegistry: true
         outputLocation: /tmp/dist
         outputFile: hello_output
-        goCommand: build -o /tmp/dist/hello_output
+#         goCommand: build -o /tmp/dist/hello_output
         inputResources:
             - name: go_example
         integrations:
