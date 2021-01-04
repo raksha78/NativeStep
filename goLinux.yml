@@ -18,6 +18,7 @@ pipelines:
             JFROG_CLI_BUILD_NAME: go_example_build_publish
           sourceLocation: .
           resolverRepo: go_local
+          repository: go_local
           outputLocation: /tmp/dist
           outputFile: hello_output
           goCommand: build -o /tmp/dist/hello_output
