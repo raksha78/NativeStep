@@ -34,7 +34,8 @@ pipelines:
           onComplete:
             - echo "____________completed"
             - cd "$(dirname "$0")"
-            - cd workspace
+            - ls 
+            - cd output
             - ls
             
 #             - cd /tmp/dist
