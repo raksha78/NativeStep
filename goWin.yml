@@ -31,7 +31,7 @@ pipelines:
             - name: art_v
         execution:
            onStart:
-              - Push-Location $res_artifactory_go_example_resourcePath/golang-example/hello
+              - Push-Location .
               - go get -insecure
               - Pop-Location
               - go version
