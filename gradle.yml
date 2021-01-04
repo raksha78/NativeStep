@@ -1,5 +1,5 @@
 resources:
-  - name: gradle_repo
+  - name: gradle_repository
     type: GitRepo
     configuration:
       gitProvider: rak_github
@@ -16,7 +16,7 @@ pipelines:
           configFileLocation: .
           configFileName: gradle-art-config
           inputResources:
-            - name: gradle_repo
+            - name: gradle_repository
           integrations:
             - name: art_v
         execution:
