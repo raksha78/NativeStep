@@ -2,7 +2,7 @@ resources:
   - name: gradle_repository
     type: GitRepo
     configuration:
-      gitProvider: rak_github
+      gitProvider: raksha78_github
       path: raksha78/project-examples
       
 pipelines:
