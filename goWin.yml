@@ -7,12 +7,6 @@ resources:
         include: powershell
       gitProvider: raksha78_github
       
-  - name: go_rak
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: art_v
-      buildName: go_rak
-      buildNumber: 1
        
 
 pipelines:
@@ -48,13 +42,5 @@ pipelines:
             - cd workspace
             - cd tmp
             - ls
-      - name: publish_go_binary
-        type: GoPublishBinary
-        configuration:
-          inputSteps:
-            - name: build_go
-          targetRepository: go_local
-          integrations:
-            - name: art_v
-          outputResources:
-            - name: go_rak
+     
+       
