@@ -39,4 +39,4 @@ pipelines:
            onComplete:
               - pwd
               - cd workspace
-              - ls
+              - cd tmp
