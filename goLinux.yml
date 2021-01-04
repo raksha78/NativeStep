@@ -1,0 +1,26 @@
+resources:
+  - name: go_example
+    type: GitRepo
+    configuration:
+      path: raksha78/NativeStep
+      branches:
+        include: linux
+      gitProvider: raksha78_github
+       
+
+pipelines:
+  - name: go_build_pipeline
+    steps:
+      - name: build_go
+        type: GoBuild
+        configuration:
+          sourceLocation: .
+          repository: go_local
+          outputLocation: /tmp/dist
+          outputFile: linux_go
+          inputResources:
+            - name: go_example
+          integrations:
+            - name: art_v
+       
+      
