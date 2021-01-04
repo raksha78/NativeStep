@@ -30,7 +30,7 @@ pipelines:
                 - name: go_example
             integrations:
                 - name: art_v
-            execution:
+        execution:
             onStart:
                 - $res_go_example_resourcePath
                 - Push-Location $res_go_example_resourcePath
