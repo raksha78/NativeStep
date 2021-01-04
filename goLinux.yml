@@ -31,11 +31,11 @@ pipelines:
               - printenv
               - echo $GOPATH
 #           onStart:
-#             - buildDir=$(find_resource_variable $inputGitRepoResourceName resourcePath)
-#             - echo "******** buildDir - $buildDir"
-#             - pushd $buildDir
-#             - go get -insecure
-#             - popd
+              - buildDir=$(find_resource_variable $inputGitRepoResourceName resourcePath)
+              - echo "******** buildDir - $buildDir"
+              - pushd $buildDir
+              - go get -insecure
+              - popd
            onComplete:
 #             - echo "____________completed"
 #             - cd "$(dirname "$0")"
