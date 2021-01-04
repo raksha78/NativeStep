@@ -34,7 +34,7 @@ pipelines:
           onComplete:
             - echo "____________completed"
             - cd "$(dirname "$0")"
-            - cd workspace/GoBuild
+            - cd workspace
             - ls
             
 #             - cd /tmp/dist
