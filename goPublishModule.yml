@@ -31,5 +31,5 @@ pipelines:
             - name: art_v
           inputResources:
             - name: go_example
-          outputResources:
-            - name: go_rak
+#           outputResources:
+#             - name: go_rak
