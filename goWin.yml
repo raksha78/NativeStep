@@ -38,4 +38,5 @@ pipelines:
               - go version
            onComplete:
               - pwd
+              - cd workspace
               - ls
