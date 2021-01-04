@@ -37,5 +37,5 @@ pipelines:
               - Pop-Location
               - go version
            onComplete:
-              - cd "$(dirname "$0")"
+              - pwd
               - ls
