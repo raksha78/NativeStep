@@ -18,7 +18,7 @@ pipelines:
             JFROG_CLI_BUILD_NAME: go_example_build_publish
           sourceLocation: .
           repository: go_local
-          outputLocation: /tmp/dist
+#           outputLocation: /tmp/dist
           outputFile: hello_output
           inputResources:
             - name: go_example
@@ -34,7 +34,7 @@ pipelines:
           onComplete:
             - echo "____________completed"
             - cd "$(dirname "$0")"
-            - cd output
+            - cd workspace
             - ls
             
 #             - cd /tmp/dist
