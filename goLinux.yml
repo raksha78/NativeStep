@@ -31,5 +31,8 @@ pipelines:
             - pushd $buildDir
             - go get -insecure
             - popd
-       
+          onComplete:
+            - echo "____________completed"
+            - ls 
+            - cat /tmp/dist/hello_output
       
