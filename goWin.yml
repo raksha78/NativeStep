@@ -40,3 +40,4 @@ pipelines:
               - pwd
               - cd workspace
               - cd tmp
+              - ls
