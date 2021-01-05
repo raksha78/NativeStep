@@ -1,20 +1,20 @@
 resources:
-  - name: gradle_repository
+  - name: gradle_repository_1
     type: GitRepo
     configuration:
       gitProvider: raksha78_github
       path: raksha78/project-examples
-  - name: gradle_rak
+  - name: gradle_rak_1
     type: BuildInfo
     configuration:
       sourceArtifactory: art_v
       
 pipelines:
-  - name: gradle_pipeline
+  - name: gradle_pipeline_1
     configuration:
       nodePool: win_2019
     steps:
-      - name: gradle_build_step
+      - name: gradle_build_step_1
         type: GradleBuild
         configuration:
           sourceLocation: gradle-examples/gradle-example-minimal
@@ -23,11 +23,11 @@ pipelines:
 #           autoPublishBuildInfo: true
           configFileName: gradle-art-config
           inputResources:
-            - name: gradle_repository
+            - name: gradle_repository_1
           integrations:
             - name: art_v
 #           outputResources:
-#             - name: gradle_rak
+#             - name: gradle_rak_1
         execution:
           onStart:
             - javac -version
