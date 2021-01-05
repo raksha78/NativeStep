@@ -4,7 +4,12 @@ resources:
     configuration:
       path: raksha78/npmHelloWorld
       gitProvider: raksha78_github
-      
+  - name: npm_publish
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art_v
+      buildName: npm_publish
+      buildNumber: 1
       
 pipelines:
   - name: npm
@@ -12,8 +17,8 @@ pipelines:
       - name: build_npm
         type: NpmBuild
         configuration:
-          repositoryName: npm-virtual
-#           resolverRepo: npm-virtual
+#           repositoryName: npm-virtual
+          resolverRepo: npm-virtual
           sourceLocation: .
           inputResources:
             - name: npm_repo
@@ -22,9 +27,12 @@ pipelines:
       - name: publish_npm
         type: NpmPublish
         configuration:
+          autoPublishBuildInfo: true
           repositoryName: npm-virtual
           inputSteps:
             - name: build_npm
           integrations:
             - name: art_v
+          outputResources:
+            - name: npm_publish
     
