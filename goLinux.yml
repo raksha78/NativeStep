@@ -19,7 +19,7 @@ pipelines:
           sourceLocation: .
 #           resolverRepo: go_local
           repository: go_local
-          noRegistry: true
+#           noRegistry: true
           outputLocation: /tmp/dist
           outputFile: hello_output
           goCommand: build -o /tmp/dist/hello_output
@@ -34,13 +34,13 @@ pipelines:
               - pushd $buildDir
               - go get -insecure
               - popd
-#            onComplete:
-# #             - echo "____________completed"
-# #             - cd "$(dirname "$0")"
-# #             - ls 
-# #             - cd output
-# #             - ls
+           onComplete:
+#             - echo "____________completed"
+#             - cd "$(dirname "$0")"
+#             - ls 
+#             - cd output
+#             - ls
             
-#               - cd /tmp/dist
-#               - ls
+              - cd /tmp/dist
+              - ls
       
