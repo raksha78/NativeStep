@@ -32,8 +32,8 @@ pipelines:
                 - name: art_v
         execution:
             onStart:
-                - $res_go_example_resourcePath
-                - Push-Location $res_go_example_resourcePath
+                - $res_go_example_1_resourcePath
+                - Push-Location $res_go_example_1_resourcePath
                 - go get -insecure
                 - Pop-Location
                 - go version
