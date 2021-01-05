@@ -22,8 +22,8 @@ pipelines:
         type: DockerBuild
         configuration:
 #           affinityGroup: Together
-#           dockerFileLocation: . # optional, defaults to .
-          dockerFileName: Dockerfile    # optional, defaults to Dockerfile
+          dockerFileLocation: . # optional, defaults to .
+#           dockerFileName: Dockerfile    # optional, defaults to Dockerfile
           dockerImageName: dev.jfrog-pipelines.com/rak_docker/img   
           dockerImageTag:  ${run_number}    
           inputResources:
