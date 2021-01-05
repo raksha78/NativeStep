@@ -1,5 +1,5 @@
 resources:
-  - name: go_example
+  - name: go_example_1
     type: GitRepo
     configuration:
       path: raksha78/NativeStep
@@ -7,18 +7,18 @@ resources:
         include: powershell
       gitProvider: raksha78_github
       
-  - name: go_rak
+  - name: go_rak_1
     type: BuildInfo
     configuration:
       sourceArtifactory: art_v
          
 
 pipelines:
-  - name: go_build_pipeline
+  - name: go_build_pipeline_1
     configuration:
       nodePool: win_2019
     steps:
-      - name: publish_go_module
+      - name: publish_go_module_1
         type: GoPublishModule
         configuration:
           environmentVariables:
@@ -31,6 +31,6 @@ pipelines:
           integrations:
             - name: art_v
           inputResources:
-            - name: go_example
+            - name: go_example_1
           outputResources:
-            - name: go_rak
+            - name: go_rak_1
