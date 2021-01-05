@@ -6,12 +6,12 @@ resources:
       path: raksha78/NativeStep
       branches:
         include: ^linux$
-#   - name: docker_rak_linux
-#     type: BuildInfo
-#     configuration:
-#       sourceArtifactory: art_v
-#       buildName: docker_rak_linux
-#       buildNumber: 1
+  - name: docker_rak_linux
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art_v
+      buildName: docker_rak_linux
+      buildNumber: 1
 #   - name: output
 #     type: Image
 #     configuration:
@@ -33,18 +33,18 @@ pipelines:
           dockerImageTag:  ${run_number}    
           inputResources:
               - name: repo  
-#       - name: pushStep
-#         type: DockerPush
-#         configuration:
-#           targetRepository: rak_docker 
-#           affinityGroup: Together
-# #           autoPublishBuildInfo: true
-#           integrations:
-#             - name: art_v 
-#           inputSteps:
-#             - name: buildStep  
-#           outputResources:
-#             - name: output
+      - name: pushStep
+        type: DockerPush
+        configuration:
+          targetRepository: rak_docker 
+          affinityGroup: Together
+          autoPublishBuildInfo: true
+          integrations:
+            - name: art_v 
+          inputSteps:
+            - name: buildStep  
+          outputResources:
+            - name: docker_rak_linux
             
             
 #       - name: pushStep2
