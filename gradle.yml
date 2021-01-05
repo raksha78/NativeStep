@@ -16,7 +16,7 @@ pipelines:
         type: GradleBuild
         configuration:
           sourceLocation: gradle-examples/gradle-example-minimal
-          configFileLocation: gradle-examples/gradle-example-minimal/
+          configFileLocation: gradle-examples/gradle-example-minimal
           configFileName: gradle-art-config
           gradleCommand: clean artifactoryPublish -b build.gradle
           autoPublishBuildInfo: true
