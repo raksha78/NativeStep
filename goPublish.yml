@@ -42,11 +42,7 @@ pipelines:
                 - go get -insecure
                 - Pop-Location
                 - go version
-            onComplete:
-                - pwd
-                - cd workspace
-                - cd tmp
-                - ls
+           
                 
       - name: publish_go_binary_1
         type: GoPublishBinary
