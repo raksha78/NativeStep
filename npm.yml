@@ -14,7 +14,7 @@ pipelines:
       - name: build_npm_1
         type: NpmBuild
         configuration:
-          repositoryName: npm-virtual
+#           repositoryName: npm-virtual
           resolverRepo: npm-virtual
 #           sourceLocation: .
           inputResources:
