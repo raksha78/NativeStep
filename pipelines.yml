@@ -38,13 +38,13 @@ pipelines:
         configuration:
           targetRepository: rak_docker 
           affinityGroup: Together
-          autoPublishBuildInfo: true
+#           autoPublishBuildInfo: true
           integrations:
             - name: art_v 
           inputSteps:
             - name: buildStep  
-          outputResources:
-            - name: docker_rak_linux
+#           outputResources:
+#             - name: docker_rak_linux
             
             
 #       - name: pushStep2
