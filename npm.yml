@@ -14,11 +14,19 @@ pipelines:
       - name: build_npm_1
         type: NpmBuild
         configuration:
-#           repositoryName: npm-virtual
-          resolverRepo: npm-virtual
-#           sourceLocation: .
+          repositoryName: npm-virtual
+#           resolverRepo: npm-virtual
+          sourceLocation: .
           inputResources:
             - name: npm_repo_1
+          integrations:
+            - name: art_v
+      - name: publish_npm_1
+        type: NpmPublish
+        configuration:
+          repositoryName: npm-virtual
+          inputSteps:
+            - name: build_npm_1
           integrations:
             - name: art_v
     
