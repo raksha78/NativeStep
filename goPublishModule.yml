@@ -7,10 +7,10 @@ resources:
         include: powershell
       gitProvider: raksha78_github
       
-  - name: go_rak_1
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: art_v
+#   - name: go_rak_1
+#     type: BuildInfo
+#     configuration:
+#       sourceArtifactory: art_v
          
 
 pipelines:
@@ -27,10 +27,10 @@ pipelines:
           version: v0.0.0
           self: true
           targetRepository: go_local
-          autoPublishBuildInfo: true
+#           autoPublishBuildInfo: true
           integrations:
             - name: art_v
           inputResources:
             - name: go_example_1
-          outputResources:
-            - name: go_rak_1
+#           outputResources:
+#             - name: go_rak_1
