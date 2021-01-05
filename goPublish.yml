@@ -40,21 +40,17 @@ pipelines:
                 - pushd $buildDir
                 - go get -insecure
                 - popd
-            onComplete:
-                - pwd
-                - cd workspace
-                - cd tmp
-                - ls
+            
                 
       - name: publish_go_binary
         type: GoPublishBinary
         configuration:
-#           autoPublishBuildInfo: true
+          autoPublishBuildInfo: true
           inputSteps:
             - name: build_go
           targetRepository: go_local
           integrations:
             - name: art_v
-#           outputResources:
-#             - name: go_rak
+          outputResources:
+            - name: go_rak
              
