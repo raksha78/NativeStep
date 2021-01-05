@@ -51,7 +51,7 @@ pipelines:
       - name: publish_go_binary_1
         type: GoPublishBinary
         configuration:
-          autoPublishBuildInfo: true
+#           autoPublishBuildInfo: true
           inputSteps:
             - name: build_go_1
           targetRepository: go_local
