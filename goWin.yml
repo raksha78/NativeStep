@@ -25,7 +25,7 @@ pipelines:
     #           noRegistry: true
             outputLocation: /tmp/dist/test
             outputFile: hello_output_win
-            goCommand: build -o /tmp/dist/test/hello_output_win
+            goCommand: build -o /tmp/dist/test/rak/hello_output_win
             inputResources:
                 - name: go_example_1
             integrations:
