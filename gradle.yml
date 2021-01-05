@@ -20,14 +20,14 @@ pipelines:
           sourceLocation: gradle-examples/gradle-example-minimal
           gradleCommand: clean artifactoryPublish -b build.gradle
           configFileLocation: .
-#           autoPublishBuildInfo: true
+          autoPublishBuildInfo: true
           configFileName: gradle-art-config
           inputResources:
             - name: gradle_repository_1
           integrations:
             - name: art_v
-#           outputResources:
-#             - name: gradle_rak_1
+          outputResources:
+            - name: gradle_rak_1
         execution:
           onStart:
             - javac -version
