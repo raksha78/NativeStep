@@ -2,8 +2,8 @@ resources:
   - name: npm_repo
     type: GitRepo
     configuration:
-      path: vijayreddy1991/npmHelloWorld
-      gitProvider: vijay_git
+      path: raksha78/npmHelloWorld
+      gitProvider: raksha78_github
       
       
 pipelines:
