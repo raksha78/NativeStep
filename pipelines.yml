@@ -21,22 +21,22 @@ pipelines:
       - name: buildStep_1
         type: DockerBuild
         configuration:
-          affinityGroup: Together
-          dockerFileLocation: . # optional, defaults to .
+#           affinityGroup: Together
+#           dockerFileLocation: . # optional, defaults to .
           dockerFileName: Dockerfile    # optional, defaults to Dockerfile
           dockerImageName: dev.jfrog-pipelines.com/rak_docker/img   
           dockerImageTag:  ${run_number}    
           inputResources:
               - name: repo_1
-      - name: pushStep_1
-        type: DockerPush
-        configuration:
-          targetRepository: rak_docker 
-          affinityGroup: Together
-          autoPublishBuildInfo: true
-          integrations:
-            - name: art_v 
-          inputSteps:
-            - name: buildStep_1
-          outputResources:
-            - name: docker_rak_win
+#       - name: pushStep_1
+#         type: DockerPush
+#         configuration:
+#           targetRepository: rak_docker 
+#           affinityGroup: Together
+#           autoPublishBuildInfo: true
+#           integrations:
+#             - name: art_v 
+#           inputSteps:
+#             - name: buildStep_1
+#           outputResources:
+#             - name: docker_rak_win
