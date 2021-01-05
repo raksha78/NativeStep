@@ -7,10 +7,10 @@ resources:
         include: linux
       gitProvider: raksha78_github
       
-  - name: go_rak
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: art_v
+#   - name: go_rak
+#     type: BuildInfo
+#     configuration:
+#       sourceArtifactory: art_v
          
 
 pipelines:
@@ -21,7 +21,7 @@ pipelines:
         configuration:
           environmentVariables:
             JFROG_CLI_BUILD_NAME: go_example_module_publish
-          sourceLocation: .
+#           sourceLocation: .
           version: v0.0.0
           targetRepository: go_local
           autoPublishBuildInfo: true
@@ -29,5 +29,5 @@ pipelines:
             - name: art_v
           inputResources:
             - name: go_example
-          outputResources:
-            - name: go_rak
+#           outputResources:
+#             - name: go_rak
