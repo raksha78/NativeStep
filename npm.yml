@@ -1,0 +1,21 @@
+resources:
+  - name: npm_repo
+    type: GitRepo
+    configuration:
+      path: vijayreddy1991/npmHelloWorld
+      gitProvider: vijay_git
+      
+      
+pipelines:
+  - name: npm
+    steps:
+      - name: build_npm
+        type: NpmBuild
+        configuration:
+          repositoryName: npm-virtual
+          sourceLocation: .
+          inputResources:
+            - name: npm_repo
+          integrations:
+            - name: art_v
+    
