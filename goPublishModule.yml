@@ -24,7 +24,7 @@ pipelines:
 #           sourceLocation: .
           version: v0.0.0
           targetRepository: go_local
-          autoPublishBuildInfo: true
+#           autoPublishBuildInfo: true
           integrations:
             - name: art_v
           inputResources:
