@@ -28,15 +28,15 @@ pipelines:
           dockerImageTag:  ${run_number}    
           inputResources:
               - name: repo_1
-#       - name: pushStep_1
-#         type: DockerPush
-#         configuration:
-#           targetRepository: rak_docker 
-#           affinityGroup: Together
-#           autoPublishBuildInfo: true
-#           integrations:
-#             - name: art_v 
-#           inputSteps:
-#             - name: buildStep_1
-#           outputResources:
-#             - name: docker_rak_win
+      - name: pushStep_1
+        type: DockerPush
+        configuration:
+          targetRepository: rak_docker 
+          affinityGroup: Together
+          autoPublishBuildInfo: true
+          integrations:
+            - name: art_v 
+          inputSteps:
+            - name: buildStep_1
+          outputResources:
+            - name: docker_rak_win
