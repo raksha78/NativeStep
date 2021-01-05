@@ -21,7 +21,7 @@ pipelines:
       - name: buildStep_1
         type: DockerBuild
         configuration:
-#           affinityGroup: Together
+          affinityGroup: Together
           dockerFileLocation: . # optional, defaults to .
 #           dockerFileName: Dockerfile    # optional, defaults to Dockerfile
           dockerImageName: dev.jfrog-pipelines.com/rak_docker/img   
