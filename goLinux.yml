@@ -35,12 +35,8 @@ pipelines:
               - go get -insecure
               - popd
            onComplete:
-#             - echo "____________completed"
-#             - cd "$(dirname "$0")"
-#             - ls 
-#             - cd output
-#             - ls
+              - ls $step_workspace_dir/GoBuild
             
-              - cd /tmp/dist
-              - ls
+#               - cd /tmp/dist
+#               - ls
       
