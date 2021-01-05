@@ -1,24 +1,24 @@
 resources:
-  - name: repo
+  - name: repo_1
     type: GitRepo
     configuration:
       gitProvider: raksha78_github                     
       path: raksha78/NativeStep
       branches:
         include: ^powershell$
-  - name: docker_rak
+  - name: docker_rak_win
     type: BuildInfo
     configuration:
       sourceArtifactory: art_v
-      buildName: docker_rak
+      buildName: docker_rak_win
       buildNumber: 1
 
 pipelines: 
-  - name: dockerPipe
+  - name: dockerPipe_1
     configuration:
       nodePool: win_2019
     steps:
-      - name: buildStep
+      - name: buildStep_1
         type: DockerBuild
         configuration:
           affinityGroup: Together
@@ -27,8 +27,8 @@ pipelines:
           dockerImageName: dev.jfrog-pipelines.com/rak_docker/img   
           dockerImageTag:  ${run_number}    
           inputResources:
-              - name: repo  
-      - name: pushStep
+              - name: repo_1
+      - name: pushStep_1
         type: DockerPush
         configuration:
           targetRepository: rak_docker 
@@ -37,6 +37,6 @@ pipelines:
           integrations:
             - name: art_v 
           inputSteps:
-            - name: buildStep  
+            - name: buildStep_1
           outputResources:
-            - name: docker_rak
+            - name: docker_rak_win
