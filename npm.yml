@@ -1,0 +1,23 @@
+resources:
+  - name: npm_repo_1
+    type: GitRepo
+    configuration:
+      path: raksha78/npmHelloWorld
+      gitProvider: raksha78_github
+      
+      
+pipelines:
+  - name: npm_1
+    configuration:
+      nodePool: win_2019
+    steps:
+      - name: build_npm_1
+        type: NpmBuild
+        configuration:
+          repositoryName: npm-virtual
+          sourceLocation: .
+          inputResources:
+            - name: npm_repo_1
+          integrations:
+            - name: art_v
+    
