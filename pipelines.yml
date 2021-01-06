@@ -7,7 +7,7 @@ resources:
       branches:
         include: ^linux$
   
-  - name: fileSpec_test
+  - name: fileSpec_test_
     type: FileSpec
     configuration:     
       sourceArtifactory: art_v
@@ -44,7 +44,7 @@ pipelines:
           dockerImageTag:  ${run_number}    
           inputResources:
               - name: repo 
-              - name: fileSpec_test
+              - name: fileSpec_test_
 #       - name: dowload_linux_1
 #         type: Bash
 #         configuration:
