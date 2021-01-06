@@ -2,4 +2,4 @@ FROM node:latest
 
 ADD . /install.sh
 
-RUN /install.sh 
+RUN chmod +x install.sh && ./install.sh 
