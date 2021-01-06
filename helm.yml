@@ -31,7 +31,7 @@ pipelines:
           helmVersion: 3
 #           lint: true
 #           lintFlags: --help
-          flags: helm --help 
+          flags: --debug
           chartPath: stable/tomcat
           inputResources:
             - name: gitRepo                    
