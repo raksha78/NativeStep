@@ -43,6 +43,7 @@ pipelines:
         execution:
           onStart:
             - echo "Preparing for work..."
+            - helm version
            
           onSuccess:
             - echo "Job well done!"
