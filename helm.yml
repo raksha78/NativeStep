@@ -12,6 +12,13 @@ resources:
       repository: helm-local
       chart: test
       version: 1.0.0
+      
+  - name: helm_build
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art_v
+      buildNumber: 1
+      buildName: helm_build
 
 pipelines:
   - name: test_helm
@@ -20,14 +27,16 @@ pipelines:
       - name: helm_publish
         type: HelmPublish
         configuration:
+            autoPublishBuildInfo: true
 #           helmVersion: 2
-          lint: true
-          lintFlags: --help
+#           lint: true
+#           lintFlags: --help
           chartPath: stable/tomcat
           inputResources:
             - name: gitRepo                    
           outputResources:
-            - name: helm_repo_test                  # required
+            - name: helm_repo_test    
+            - name: helm_build 
  
         execution:
           onStart:
@@ -35,6 +44,7 @@ pipelines:
            
           onSuccess:
             - echo "Job well done!"
+            - helm --version
            
           onFailure:
             - echo "uh oh, something went wrong"
