@@ -1,11 +1,18 @@
 resources:
-  - name: repo
-    type: GitRepo
-    configuration:
-      gitProvider: raksha78_github                     
-      path: raksha78/NativeStep
-      branches:
-        include: ^linux$
+#   - name: repo
+#     type: GitRepo
+#     configuration:
+#       gitProvider: raksha78_github                     
+#       path: raksha78/NativeStep
+#       branches:
+#         include: ^linux$
+  
+  - name: fileSpec_test
+    type: FileSpec
+    configuration:     
+      sourceArtifactory: art_v
+      pattern: "fileSpec_test/Dockerfile"
+       
 #   - name: docker_rak_linux
 #     type: BuildInfo
 #     configuration:
@@ -15,17 +22,29 @@ resources:
 
 
 pipelines: 
-  - name: dockerPipe
+  - name: dockerPipe_01
     steps:
-      - name: buildStep
-        type: DockerBuild
+#       - name: buildStep
+#         type: DockerBuild
+#         configuration:
+#           dockerFileLocation: . # optional, defaults to .
+#           dockerFileName: Dockerfile    # optional, defaults to Dockerfile
+#           dockerImageName: dev.jfrog-pipelines.com/rak_docker/img   
+#           dockerImageTag:  ${run_number}    
+#           inputResources:
+#               - name: repo 
+      - name: dowload_linux_1
+        type: Bash
         configuration:
-          dockerFileLocation: . # optional, defaults to .
-          dockerFileName: Dockerfile    # optional, defaults to Dockerfile
-          dockerImageName: dev.jfrog-pipelines.com/rak_docker/img   
-          dockerImageTag:  ${run_number}    
+          integrations:
+            - name: art_v
           inputResources:
-              - name: repo  
+#             - name: connecting_resource
+            - name: fileSpec_test
+        execution:
+          onExecute:
+            - echo $res_fileSpec_test_resourcePath
+            - ls $res_fileSpec_test_resourcePath
 #       - name: pushStep
 #         type: DockerPush
 #         configuration:
