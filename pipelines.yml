@@ -17,6 +17,14 @@ resources:
     configuration:     
       sourceArtifactory: art_v
       pattern: "fileSpec_test/install.ps1"
+      
+  - name: out_img_1
+    type: Image
+    configuration:
+       registry: art_v
+       sourceRepository: output_res  # required if Docker registry is Artifactory
+       imageName: dev.jfrog-pipelines.com/rak_docker/img 
+       imageTag: ${run_number}  
 
 pipelines: 
   - name: dockerPipe_1
@@ -34,15 +42,15 @@ pipelines:
           inputResources:
               - name: repo_1
               - name: fileSpec_test_1
-#       - name: pushStep_1
-#         type: DockerPush
-#         configuration:
-#           targetRepository: rak_docker 
-#           affinityGroup: Together
-# #           autoPublishBuildInfo: true
-#           integrations:
-#             - name: art_v 
-#           inputSteps:
-#             - name: buildStep_1
-# #           outputResources:
-# #             - name: docker_rak_win
+      - name: pushStep_1
+        type: DockerPush
+        configuration:
+          targetRepository: rak_docker 
+          affinityGroup: Together
+#           autoPublishBuildInfo: true
+          integrations:
+            - name: art_v 
+          inputSteps:
+            - name: buildStep_1
+          outputResources:
+            - name: out_img_1
