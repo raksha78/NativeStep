@@ -38,8 +38,8 @@ pipelines:
         type: PublishBuildInfo
         
         configuration:
-          envInclude: buildinfo.env.*  # optional 
-#           envExclude: <string>  # optional
+#           envInclude: buildinfo.env.*  # optional 
+          envExclude: buildinfo.env.* # optional
 #           forceXrayScan: <boolean/string>  # optional, defaults to false
 #           failOnScan: <boolean/string>   # optional, defaults to true
 
