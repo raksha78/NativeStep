@@ -14,7 +14,7 @@ resources:
       version: 1.0.0
 
 pipelines:
-  - name: test_helm_vijay
+  - name: test_helm
 
     steps:
       - name: helm_publish
