@@ -1,6 +1,6 @@
 FROM node:latest
 
-ADD install.sh
+ADD . /install.sh
 
 RUN ls . 
-RUN install.sh 
+RUN ./install.sh 
