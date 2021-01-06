@@ -31,8 +31,9 @@ pipelines:
 #           helmVersion: 2
           autoPublishBuildInfo: true
           helmVersion: 2
-          lint: true
-          lintFlags: --help
+#           lint: true
+#           lintFlags: --help
+          flags: --debug
           chartPath: stable/tomcat
           inputResources:
             - name: gitRepo_1                 
