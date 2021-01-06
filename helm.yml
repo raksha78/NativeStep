@@ -28,7 +28,7 @@ pipelines:
         type: HelmPublish
         configuration:
           autoPublishBuildInfo: true
-          helmVersion: 3
+          helmVersion: 2
 #           lint: true
 #           lintFlags: --help
           flags: --debug
