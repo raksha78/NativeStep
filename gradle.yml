@@ -36,9 +36,9 @@ pipelines:
             
       - name: gradle_publish
         type: PublishBuildInfo
+        buildName: build1
+        buildNumber: 1
         configuration:
-          buildName: build1
-          buildNumber: 1
           envInclude: buildinfo.env.*  # optional 
 #           envExclude: <string>  # optional
 #           forceXrayScan: <boolean/string>  # optional, defaults to false
