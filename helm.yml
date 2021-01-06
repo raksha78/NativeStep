@@ -31,7 +31,7 @@ pipelines:
           helmVersion: 3
 #           lint: true
 #           lintFlags: --help
-          flags:  --tiller-namespace string  
+          flags: helm --help 
           chartPath: stable/tomcat
           inputResources:
             - name: gitRepo                    
@@ -45,7 +45,7 @@ pipelines:
            
           onSuccess:
             - echo "Job well done!"
-            - version --short
+            - helm version
            
           onFailure:
             - echo "uh oh, something went wrong"
