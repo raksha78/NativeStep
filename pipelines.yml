@@ -12,6 +12,11 @@ resources:
       sourceArtifactory: art_v
       buildName: docker_rak_win
       buildNumber: 1
+  - name: fileSpec_test_1
+    type: FileSpec
+    configuration:     
+      sourceArtifactory: art_v
+      pattern: "fileSpec_test/install.ps1"
 
 pipelines: 
   - name: dockerPipe_1
@@ -23,20 +28,21 @@ pipelines:
         configuration:
           affinityGroup: Together
           dockerFileLocation: . # optional, defaults to .
-#           dockerFileName: Dockerfile    # optional, defaults to Dockerfile
+          dockerFileName: Dockerfile    # optional, defaults to Dockerfile
           dockerImageName: dev.jfrog-pipelines.com/rak_docker/img   
           dockerImageTag:  ${run_number}    
           inputResources:
               - name: repo_1
-      - name: pushStep_1
-        type: DockerPush
-        configuration:
-          targetRepository: rak_docker 
-          affinityGroup: Together
-#           autoPublishBuildInfo: true
-          integrations:
-            - name: art_v 
-          inputSteps:
-            - name: buildStep_1
-#           outputResources:
-#             - name: docker_rak_win
+              - name: fileSpec_test_1
+#       - name: pushStep_1
+#         type: DockerPush
+#         configuration:
+#           targetRepository: rak_docker 
+#           affinityGroup: Together
+# #           autoPublishBuildInfo: true
+#           integrations:
+#             - name: art_v 
+#           inputSteps:
+#             - name: buildStep_1
+# #           outputResources:
+# #             - name: docker_rak_win
