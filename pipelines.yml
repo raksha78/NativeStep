@@ -1,11 +1,11 @@
 resources:
-#   - name: repo
-#     type: GitRepo
-#     configuration:
-#       gitProvider: raksha78_github                     
-#       path: raksha78/NativeStep
-#       branches:
-#         include: ^linux$
+  - name: repo
+    type: GitRepo
+    configuration:
+      gitProvider: raksha78_github                     
+      path: raksha78/NativeStep
+      branches:
+        include: ^linux$
   
   - name: fileSpec_test
     type: FileSpec
@@ -20,6 +20,16 @@ resources:
 #       buildName: docker_rak_linux
 #       buildNumber: 1
 
+  - name: out_img
+    type: Image
+    configuration:
+       registry: art_v
+       sourceRepository: output_res  # required if Docker registry is Artifactory
+       imageName: dev.jfrog-pipelines.com/rak_docker/img 
+       imageTag: ${run_number}  
+       
+
+
 
 pipelines: 
   - name: dockerPipe_01
@@ -27,12 +37,13 @@ pipelines:
       - name: buildStep
         type: DockerBuild
         configuration:
+          affinityGroup: Together
           dockerFileLocation: . # optional, defaults to .
           dockerFileName: Dockerfile    # optional, defaults to Dockerfile
           dockerImageName: dev.jfrog-pipelines.com/rak_docker/img   
           dockerImageTag:  ${run_number}    
           inputResources:
-              - name: fileSpec_test 
+              - name: repo 
 #       - name: dowload_linux_1
 #         type: Bash
 #         configuration:
@@ -45,17 +56,17 @@ pipelines:
 #           onExecute:
 #             - echo $res_fileSpec_test_resourcePath
 #             - ls $res_fileSpec_test_resourcePath
-#       - name: pushStep
-#         type: DockerPush
-#         configuration:
-#           targetRepository: rak_docker 
-#           affinityGroup: Together
-#           autoPublishBuildInfo: true
-#           integrations:
-#             - name: art_v 
-#           inputSteps:
-#             - name: buildStep  
-#           outputResources:
-#             - name: docker_rak_linux
+      - name: pushStep
+        type: DockerPush
+        configuration:
+          targetRepository: rak_docker 
+          affinityGroup: Together
+          autoPublishBuildInfo: true
+          integrations:
+            - name: art_v 
+          inputSteps:
+            - name: buildStep  
+          outputResources:
+            - name: out_img
             
             
