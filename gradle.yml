@@ -9,8 +9,9 @@ resources:
     type: BuildInfo
     configuration:
       sourceArtifactory: art_v
-      buildName: build1
-      buildNumber: 1
+      buildStepName: gradle_build_step
+#       buildName: build1
+#       buildNumber: 1
  
       
 pipelines:
@@ -40,8 +41,8 @@ pipelines:
         type: PublishBuildInfo
         
         configuration:
-          envInclude: buildinfo.env.*  # optional 
-#           envExclude: <string>  # optional
+#           envInclude: buildinfo.env.*  # optional 
+          envExclude: buildinfo.env.* # optional
 #           forceXrayScan: <boolean/string>  # optional, defaults to false
 #           failOnScan: <boolean/string>   # optional, defaults to true
 
