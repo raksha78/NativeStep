@@ -1,0 +1,41 @@
+resources:
+  - name: gitRepo_1
+    type: GitRepo
+    configuration:
+      gitProvider: raksha78_github
+      path: raksha78/charts
+   
+  - name: helm_repo_test_1
+    type: HelmChart
+    configuration: 
+      sourceArtifactory: art_v
+      repository: helm-local
+      chart: test
+      version: 1.0.0
+
+pipelines:
+  - name: test_helm_1
+    configuration:
+        nodePool: win_2019
+    steps:
+      - name: helm_publish_1
+        type: HelmPublish
+        configuration:
+          chartPath: stable/tomcat
+          inputResources:
+            - name: gitRepo_1                 
+          outputResources:
+            - name: helm_repo_test_1               # required
+ 
+        execution:
+          onStart:
+            - echo "Preparing for work..."
+           
+          onSuccess:
+            - echo "Job well done!"
+           
+          onFailure:
+            - echo "uh oh, something went wrong"
+           
+          onComplete: #always
+            - echo "Cleaning up some stuff"
