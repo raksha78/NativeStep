@@ -20,6 +20,7 @@ pipelines:
       - name: helm_publish
         type: HelmPublish
         configuration:
+          helmVersion: 2
           chartPath: stable/tomcat
           inputResources:
             - name: gitRepo                    
