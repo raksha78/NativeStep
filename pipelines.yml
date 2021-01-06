@@ -11,7 +11,7 @@ resources:
     type: FileSpec
     configuration:     
       sourceArtifactory: art_v
-      pattern: "fileSpec_test/Dockerfile"
+      pattern: "fileSpec_test/install.sh"
        
 #   - name: docker_rak_linux
 #     type: BuildInfo
@@ -44,6 +44,7 @@ pipelines:
           dockerImageTag:  ${run_number}    
           inputResources:
               - name: repo 
+              - name: fileSpec_test
 #       - name: dowload_linux_1
 #         type: Bash
 #         configuration:
@@ -61,7 +62,7 @@ pipelines:
         configuration:
           targetRepository: rak_docker 
           affinityGroup: Together
-          autoPublishBuildInfo: true
+#           autoPublishBuildInfo: true
           integrations:
             - name: art_v 
           inputSteps:
