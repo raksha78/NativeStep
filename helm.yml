@@ -30,7 +30,7 @@ pipelines:
         configuration:
 #           helmVersion: 2
           autoPublishBuildInfo: true
-          helmVersion: 3
+          helmVersion: 2
 #           lint: true
 #           lintFlags: --help
           flags: --debug
