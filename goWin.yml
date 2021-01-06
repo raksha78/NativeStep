@@ -20,10 +20,10 @@ pipelines:
             environmentVariables:
                 JFROG_CLI_BUILD_NAME: go_example_build_publish
 #             sourceLocation: .
-    #           resolverRepo: go_local
-            repository: go_local
+            resolverRepo: go_local
+#             repository: go_local
             noRegistry: true
-            publishDeps: true
+#             publishDeps: true
             outputLocation: /tmp/dist/test
             outputFile: hello_output_win
 #             goCommand: build -o /tmp/dist/test/hello_output_win
