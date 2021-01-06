@@ -28,9 +28,10 @@ pipelines:
         type: HelmPublish
         configuration:
           autoPublishBuildInfo: true
-#           helmVersion: 2
+          helmVersion: 3
 #           lint: true
 #           lintFlags: --help
+          flags: --sign --debug
           chartPath: stable/tomcat
           inputResources:
             - name: gitRepo                    
