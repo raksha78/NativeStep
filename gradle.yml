@@ -8,6 +8,8 @@ resources:
     type: BuildInfo
     configuration:
       sourceArtifactory: art_v
+      buildName: build1
+      buildNumber: 1
       
 pipelines:
   - name: gradle_pipeline_1
@@ -32,4 +34,18 @@ pipelines:
           onStart:
             - javac -version
             - gradle --version
+      - name: gradle_publish_1
+        type: PublishBuildInfo
+        
+        configuration:
+          envInclude: buildinfo.env.*  # optional 
+#           envExclude: <string>  # optional
+#           forceXrayScan: <boolean/string>  # optional, defaults to false
+#           failOnScan: <boolean/string>   # optional, defaults to true
+
+          inputSteps:
+            - name: gradle_build_step  _1
+          outputResources:
+            - name: gradle_rak_1  # required BuildInfo resource  
+
         
