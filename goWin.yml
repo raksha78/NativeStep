@@ -22,7 +22,8 @@ pipelines:
 #             sourceLocation: .
     #           resolverRepo: go_local
             repository: go_local
-    #           noRegistry: true
+            noRegistry: true
+            publishDeps: true
             outputLocation: /tmp/dist/test
             outputFile: hello_output_win
 #             goCommand: build -o /tmp/dist/test/hello_output_win
