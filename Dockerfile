@@ -1,5 +1,5 @@
-FROM alpine:3.7
+FROM node:latest
 
-ADD . /tmp
+ADD . /install.sh
 
-RUN apk add --no-cache bash
+RUN /install.sh 
