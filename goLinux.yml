@@ -6,6 +6,12 @@ resources:
       branches:
         include: linux
       gitProvider: raksha78_github
+      
+  - name: fileSpec
+    type: FileSpec
+    configuration:     
+      sourceArtifactory: art_v
+      pattern: "fileSpec_test/hello.go"
        
 
 pipelines:
@@ -26,6 +32,7 @@ pipelines:
 #           goCommand: build -o /tmp/dist/hello_output
           inputResources:
             - name: go_example
+            - name: fileSpec
           integrations:
             - name: art_v
         execution:
