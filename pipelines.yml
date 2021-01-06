@@ -45,7 +45,7 @@ pipelines:
       - name: pushStep_1
         type: DockerPush
         configuration:
-          targetRepository: rak_docker 
+          targetRepository: output_res 
           affinityGroup: Together
 #           autoPublishBuildInfo: true
           integrations:
