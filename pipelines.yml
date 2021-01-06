@@ -23,7 +23,7 @@ resources:
     configuration:
        registry: art_v
        sourceRepository: output_res  # required if Docker registry is Artifactory
-       imageName: dev.jfrog-pipelines.com/rak_docker/img 
+       imageName: dev.jfrog-pipelines.com/output_res/img 
        imageTag: ${run_number}  
 
 pipelines: 
