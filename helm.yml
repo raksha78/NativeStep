@@ -43,10 +43,11 @@ pipelines:
         execution:
           onStart:
             - echo "Preparing for work..."
-            - helm version
+            
            
           onSuccess:
             - echo "Job well done!"
+            - helm version
            
           onFailure:
             - echo "uh oh, something went wrong"
