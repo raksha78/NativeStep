@@ -4,10 +4,12 @@ resources:
     configuration:
       gitProvider: raksha78_github
       path: raksha78/project-examples
+      
   - name: gradle_rak
     type: BuildInfo
     configuration:
       sourceArtifactory: art_v
+ 
       
 pipelines:
   - name: gradle_pipeline
@@ -18,17 +20,34 @@ pipelines:
           sourceLocation: gradle-examples/gradle-example-minimal
           gradleCommand: clean artifactoryPublish -b build.gradle
           configFileLocation: .
-          autoPublishBuildInfo: true
+#           autoPublishBuildInfo: true
           configFileName: gradle-art-config
           inputResources:
             - name: gradle_repository
           integrations:
             - name: art_v
-          outputResources:
-            - name: gradle_rak
+#           outputResources:
+#             - name: gradle_rak
         execution:
           onStart:
             - javac -version
             - gradle --version
+            
+            
+      - name: gradle_publish
+        type: PublishBuildInfo
+        configuration:
+          buildName: build1
+          buildNumber: 1
+          envInclude: buildinfo.env.*  # optional 
+#           envExclude: <string>  # optional
+#           forceXrayScan: <boolean/string>  # optional, defaults to false
+#           failOnScan: <boolean/string>   # optional, defaults to true
+
+          inputSteps:
+            - name: gradle_build_step  
+          outputResources:
+            - name: gradle_rak  # required BuildInfo resource  
+
         
     
