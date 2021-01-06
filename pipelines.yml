@@ -39,12 +39,12 @@ pipelines:
         configuration:
           affinityGroup: Together
           dockerFileLocation: . # optional, defaults to .
-          dockerFileName: Dockerfile    # optional, defaults to Dockerfile
+#           dockerFileName: Dockerfile    # optional, defaults to Dockerfile
           dockerImageName: dev.jfrog-pipelines.com/rak_docker/img   
           dockerImageTag:  ${run_number}    
           inputResources:
               - name: repo 
-              - name: fileSpec_test_
+#               - name: fileSpec_test_
 #       - name: dowload_linux_1
 #         type: Bash
 #         configuration:
@@ -57,17 +57,17 @@ pipelines:
 #           onExecute:
 #             - echo $res_fileSpec_test_resourcePath
 #             - ls $res_fileSpec_test_resourcePath
-      - name: pushStep
-        type: DockerPush
-        configuration:
-          targetRepository: rak_docker 
-          affinityGroup: Together
-#           autoPublishBuildInfo: true
-          integrations:
-            - name: art_v 
-          inputSteps:
-            - name: buildStep  
-          outputResources:
-            - name: out_img
+#       - name: pushStep
+#         type: DockerPush
+#         configuration:
+#           targetRepository: rak_docker 
+#           affinityGroup: Together
+# #           autoPublishBuildInfo: true
+#           integrations:
+#             - name: art_v 
+#           inputSteps:
+#             - name: buildStep  
+#           outputResources:
+#             - name: out_img
             
             
