@@ -9,9 +9,9 @@ resources:
     type: BuildInfo
     configuration:
       sourceArtifactory: art_v
-      buildStepName: gradle_build_step
-#       buildName: build1
-#       buildNumber: 1
+#       buildStepName: gradle_build_step
+      buildName: build_rak
+      buildNumber: 9
  
       
 pipelines:
