@@ -1,7 +1,4 @@
 FROM node:latest
 
-ADD . /install.sh
-
-RUN ls . 
-
-RUN chmod +x install.sh && ./install.sh 
+ADD ./install.sh C:/Users/ContainerAdministrator/AppData/Local/Temp
+RUN C:/Users/ContainerAdministrator/AppData/Local/Temp/install.sh
