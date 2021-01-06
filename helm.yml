@@ -5,7 +5,7 @@ resources:
       gitProvider: raksha78_github
       path: raksha78/charts
    
-  - name: helm_repo
+  - name: helm_repo_test
     type: HelmChart
     configuration: 
       sourceArtifactory: art_v
@@ -24,7 +24,7 @@ pipelines:
           inputResources:
             - name: gitRepo                    
           outputResources:
-            - name: helm_repo                  # required
+            - name: helm_repo_test                  # required
  
         execution:
           onStart:
