@@ -9,6 +9,8 @@ resources:
     type: BuildInfo
     configuration:
       sourceArtifactory: art_v
+      buildName: build1
+      buildNumber: 1
  
       
 pipelines:
@@ -36,8 +38,7 @@ pipelines:
             
       - name: gradle_publish
         type: PublishBuildInfo
-        buildName: build1
-        buildNumber: 1
+        
         configuration:
           envInclude: buildinfo.env.*  # optional 
 #           envExclude: <string>  # optional
