@@ -7,6 +7,12 @@ resources:
         include: powershell
       gitProvider: raksha78_github
       
+  - name: fileSpec_publish_1
+    type: FileSpec
+    configuration:     
+      sourceArtifactory: art_v
+      pattern: "fileSpec_test/hello.go"
+      
 #   - name: go_rak_1
 #     type: BuildInfo
 #     configuration:
@@ -32,5 +38,6 @@ pipelines:
             - name: art_v
           inputResources:
             - name: go_example_1
+            - name: fileSpec_publish_1
 #           outputResources:
 #             - name: go_rak_1
