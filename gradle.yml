@@ -26,7 +26,7 @@ pipelines:
         type: GradleBuild
         configuration:
           sourceLocation: gradle-examples/gradle-jcenter-resolve
-          gradleCommand: build.gradle
+          gradleCommand:  clean artifactoryPublish -b build.gradle
 #           gradleCommand: build.gradle
           configFileLocation: .
 #           autoPublishBuildInfo: true
