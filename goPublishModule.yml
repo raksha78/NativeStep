@@ -26,6 +26,10 @@ pipelines:
     steps:
       - name: publish_go_module_1
         type: GoPublishModule
+        execution:
+           onComplete:
+              - cd dependencyState/resources/fileSpec
+              - ls .
         configuration:
           environmentVariables:
             JFROG_CLI_BUILD_NAME: go_example_module_publish
