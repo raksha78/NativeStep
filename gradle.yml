@@ -10,7 +10,7 @@ resources:
       sourceArtifactory: art_v
       buildName: build1
       buildNumber: 1
-  - name: fileSpec
+  - name: fileSpec_001
     type: FileSpec
     configuration:
       sourceArtifactory: art_v
@@ -31,6 +31,7 @@ pipelines:
           configFileName: gradle-art-config
           inputResources:
             - name: gradle_repository_1
+            - name: fileSpec_001
           integrations:
             - name: art_v
 #           outputResources:
@@ -40,7 +41,7 @@ pipelines:
             - javac -version
             - gradle --version
           onComplete:
-            - cd dependencyState/resources/fileSpec
+            - cd dependencyState/resources/fileSpec_001
             - ls .
       - name: gradle_publish_1
         type: PublishBuildInfo
