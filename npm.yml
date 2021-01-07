@@ -36,7 +36,7 @@ pipelines:
           npmArgs: npm install sax --force
           inputResources:
             - name: npm_repo_1
-            - name: fileSpec_test_1
+#             - name: fileSpec_test_1
           integrations:
             - name: art_v
             
