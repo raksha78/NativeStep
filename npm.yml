@@ -40,15 +40,15 @@ pipelines:
           integrations:
             - name: art_v
             
-#       - name: publish_npm_1
-#         type: NpmPublish
-#         configuration:
-#           autoPublishBuildInfo: true
-#           repositoryName: npm-virtual
-#           inputSteps:
-#             - name: build_npm_1
-#           integrations:
-#             - name: art_v
-#           outputResources:
-#             - name: npm_publish_1
-    
+      - name: publish_npm_1
+        type: NpmPublish
+        configuration:
+          autoPublishBuildInfo: true
+          repositoryName: npm-virtual
+          inputSteps:
+            - name: build_npm_1
+           
+          integrations:
+            - name: art_v
+          outputResources:
+            - name: npm_publish_1
