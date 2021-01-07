@@ -25,7 +25,7 @@ pipelines:
       - name: gradle_build_step
         type: GradleBuild
         configuration:
-          sourceLocation: gradle-examples/gradle-jcenter-resolve
+          sourceLocation: gradle-examples/gradle-example-minimal
 #           gradleCommand: clean artifactoryPublish -b build.gradle
           gradleCommand: build.gradle
           configFileLocation: .
