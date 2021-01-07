@@ -44,7 +44,8 @@ pipelines:
           onStart:
             - javac -version
             - gradle --version
-            - cd dependencyState/resources/fileSpec
+          onComplete:
+            - cd dependencyState/resources/fileSpec_gradle
             - ls .
 
             
