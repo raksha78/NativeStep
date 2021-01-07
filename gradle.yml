@@ -9,7 +9,6 @@ resources:
     type: BuildInfo
     configuration:
       sourceArtifactory: art_v
-#       buildStepName: gradle_build_step
       buildName: build_rak
       buildNumber: 9
            
@@ -26,16 +25,16 @@ pipelines:
       - name: gradle_build_step
         type: GradleBuild
         configuration:
-#           sourceLocation: gradle-examples/gradle-example-minimal
+          sourceLocation: gradle-examples/gradle-jcenter-resolve
           gradleCommand: clean artifactoryPublish -b build.gradle
           configFileLocation: .
 #           autoPublishBuildInfo: true
           configFileName: gradle-art-config
-#           resolverRepo: jcenter
-#           deployerRepo: gradle-local
+          resolverRepo: jcenter
+          deployerRepo: gradle-local
           inputResources:
             - name: gradle_repository
-            - name: fileSpec_gradle
+#             - name: fileSpec_gradle
           integrations:
             - name: art_v
 #           outputResources:
@@ -44,28 +43,28 @@ pipelines:
           onStart:
             - javac -version
             - gradle --version
-          onComplete:
-            - cd dependencyState/resources/fileSpec_gradle
-            - ls .
+#           onComplete:
+#             - cd dependencyState/resources/fileSpec_gradle
+#             - ls .
 
             
             
-      - name: gradle_publish
-        type: PublishBuildInfo
+#       - name: gradle_publish
+#         type: PublishBuildInfo
         
-        configuration:
-          environmentVariables: # optional
-            JFROG_CLI_BUILD_NAME: "rak_test"
-            JFROG_CLI_BUILD_NUMBER: 28
-#           envInclude: buildinfo.env.*  # optional 
-#           envExclude: buildinfo.env.* # optional
-#           forceXrayScan: <boolean/string>  # optional, defaults to false
-#           failOnScan: <boolean/string>   # optional, defaults to true
+#         configuration:
+#           environmentVariables: # optional
+#             JFROG_CLI_BUILD_NAME: "rak_test"
+#             JFROG_CLI_BUILD_NUMBER: 28
+# #           envInclude: buildinfo.env.*  # optional 
+# #           envExclude: buildinfo.env.* # optional
+# #           forceXrayScan: <boolean/string>  # optional, defaults to false
+# #           failOnScan: <boolean/string>   # optional, defaults to true
 
-          inputSteps:
-            - name: gradle_build_step  
-          outputResources:
-            - name: gradle_rak  # required BuildInfo resource  
+#           inputSteps:
+#             - name: gradle_build_step  
+#           outputResources:
+#             - name: gradle_rak  # required BuildInfo resource  
 
         
     
