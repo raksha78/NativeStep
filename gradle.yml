@@ -22,9 +22,9 @@ pipelines:
         configuration:
           sourceLocation: gradle-examples/gradle-example-minimal
           gradleCommand: clean artifactoryPublish -b build.gradle
-          configFileLocation: .
+#           configFileLocation: .
 #           autoPublishBuildInfo: true
-          configFileName: gradle-art-config
+#           configFileName: gradle-art-config
           inputResources:
             - name: gradle_repository
           integrations:
@@ -37,19 +37,19 @@ pipelines:
             - gradle --version
             
             
-      - name: gradle_publish
-        type: PublishBuildInfo
+#       - name: gradle_publish
+#         type: PublishBuildInfo
         
-        configuration:
-#           envInclude: buildinfo.env.*  # optional 
-          envExclude: buildinfo.env.* # optional
-#           forceXrayScan: <boolean/string>  # optional, defaults to false
-#           failOnScan: <boolean/string>   # optional, defaults to true
+#         configuration:
+# #           envInclude: buildinfo.env.*  # optional 
+# #           envExclude: buildinfo.env.* # optional
+# #           forceXrayScan: <boolean/string>  # optional, defaults to false
+# #           failOnScan: <boolean/string>   # optional, defaults to true
 
-          inputSteps:
-            - name: gradle_build_step  
-          outputResources:
-            - name: gradle_rak  # required BuildInfo resource  
+#           inputSteps:
+#             - name: gradle_build_step  
+# #           outputResources:
+# #             - name: gradle_rak  # required BuildInfo resource  
 
         
     
