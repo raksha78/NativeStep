@@ -33,6 +33,7 @@ pipelines:
             JFROG_CLI_BUILD_NAME: go_example_module_publish
 #           sourceLocation: .
           version: v0.0.0
+          deps: ALL
           targetRepository: go_local
 #           autoPublishBuildInfo: true
           integrations:
