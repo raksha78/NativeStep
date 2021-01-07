@@ -28,7 +28,7 @@ pipelines:
         type: HelmPublish
         configuration:
           autoPublishBuildInfo: true
-          helmVersion: 3
+          helmVersion: 2
 #           lint: true
 #           lintFlags: --help
           flags: --debug
@@ -45,7 +45,7 @@ pipelines:
            
           onSuccess:
             - echo "Job well done!"
-            - helm version
+            - helm version 
            
           onFailure:
             - echo "uh oh, something went wrong"
