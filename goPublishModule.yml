@@ -7,11 +7,11 @@ resources:
         include: linux
       gitProvider: raksha78_github
       
-  - name: fileSpec_publish
-    type: FileSpec
-    configuration:     
-      sourceArtifactory: art_v
-      pattern: "fileSpec_test/hello.go"
+#   - name: fileSpec_publish
+#     type: FileSpec
+#     configuration:     
+#       sourceArtifactory: art_v
+#       pattern: "fileSpec_test/hello.go"
       
 #   - name: go_rak
 #     type: BuildInfo
@@ -24,10 +24,10 @@ pipelines:
     steps:
       - name: publish_go_module
         type: GoPublishModule
-        execution:
-           onComplete:
-              - cd dependencyState/resources/fileSpec_publish
-              - ls .
+#         execution:
+#            onComplete:
+#               - cd dependencyState/resources/fileSpec_publish
+#               - ls .
         configuration:
           environmentVariables:
             JFROG_CLI_BUILD_NAME: go_example_module_publish
@@ -35,6 +35,8 @@ pipelines:
           version: v0.0.0
           deps: ALL
           self: true
+          forceXrayScan: true
+          failOnScan: false
           targetRepository: go_local
 #           autoPublishBuildInfo: true
           integrations:
