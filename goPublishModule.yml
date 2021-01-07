@@ -41,6 +41,6 @@ pipelines:
             - name: art_v
           inputResources:
             - name: go_example
-            - name: fileSpec_publish
+#             - name: fileSpec_publish
 #           outputResources:
 #             - name: go_rak
