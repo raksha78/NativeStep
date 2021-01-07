@@ -28,7 +28,7 @@ pipelines:
         type: GoPublishModule
         execution:
            onComplete:
-              - cd dependencyState/resources/fileSpec
+              - cd dependencyState/resources/fileSpec_publish
               - ls .
         configuration:
           environmentVariables:
