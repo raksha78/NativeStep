@@ -28,19 +28,19 @@ pipelines:
           npmArgs: npm install sax --force
           inputResources:
             - name: npm_repo
-            - 
-          integrations:
-            - name: art_v
-      - name: publish_npm
-        type: NpmPublish
-        configuration:
-          autoPublishBuildInfo: true
-          repositoryName: npm-virtual
-          inputSteps:
-            - name: build_npm
             - name: fileSpec_100
           integrations:
             - name: art_v
-          outputResources:
-            - name: npm_publish
+#       - name: publish_npm
+#         type: NpmPublish
+#         configuration:
+#           autoPublishBuildInfo: true
+#           repositoryName: npm-virtual
+#           inputSteps:
+#             - name: build_npm
+#             - name: fileSpec_100
+#           integrations:
+#             - name: art_v
+#           outputResources:
+#             - name: npm_publish
     
