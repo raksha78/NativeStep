@@ -10,6 +10,11 @@ resources:
       sourceArtifactory: art_v
       buildName: npm_publish
       buildNumber: 1
+  - name: fileSpec_100
+    type: FileSpec
+    configuration:     
+      sourceArtifactory: art_v
+      pattern: "fileSpec_test/install.sh"
       
 pipelines:
   - name: npm
@@ -17,11 +22,13 @@ pipelines:
       - name: build_npm
         type: NpmBuild
         configuration:
-#           repositoryName: npm-virtual
-          resolverRepo: npm-virtual
+          repositoryName: npm-virtual
+#           resolverRepo: npm-virtual
           sourceLocation: .
+          npmArgs: npm install sax --force
           inputResources:
             - name: npm_repo
+            - 
           integrations:
             - name: art_v
       - name: publish_npm
@@ -31,6 +38,7 @@ pipelines:
           repositoryName: npm-virtual
           inputSteps:
             - name: build_npm
+            - name: fileSpec_100
           integrations:
             - name: art_v
           outputResources:
