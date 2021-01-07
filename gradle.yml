@@ -12,6 +12,12 @@ resources:
 #       buildStepName: gradle_build_step
       buildName: build_rak
       buildNumber: 9
+           
+  - name: fileSpec_gradle
+    type: FileSpec
+    configuration:     
+      sourceArtifactory: art_v
+      pattern: "fileSpec_test/install.sh"
  
       
 pipelines:
@@ -29,6 +35,7 @@ pipelines:
           deployerRepo: gradle-local
           inputResources:
             - name: gradle_repository
+            - name: fileSpec_gradle
           integrations:
             - name: art_v
 #           outputResources:
@@ -37,6 +44,9 @@ pipelines:
           onStart:
             - javac -version
             - gradle --version
+            - cd dependencyState/resources/fileSpec
+            - ls .
+
             
             
       - name: gradle_publish
