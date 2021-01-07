@@ -10,7 +10,7 @@ resources:
       sourceArtifactory: art_v
       buildName: npm_publish
       buildNumber: 1
-  - name: fileSpec_100
+  - name: fileSpec_test
     type: FileSpec
     configuration:     
       sourceArtifactory: art_v
@@ -21,6 +21,10 @@ pipelines:
     steps:
       - name: build_npm
         type: NpmBuild
+        execution:
+          onComplete:
+            - cd dependencyState/resources/fileSpec_test
+            - ls .
         configuration:
           repositoryName: npm-virtual
 #           resolverRepo: npm-virtual
@@ -28,7 +32,7 @@ pipelines:
           npmArgs: npm install sax --force
           inputResources:
             - name: npm_repo
-            - name: fileSpec_100
+            - name: fileSpec_test
           integrations:
             - name: art_v
 #       - name: publish_npm
