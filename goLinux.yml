@@ -32,7 +32,7 @@ pipelines:
           goCommand: build -o /tmp/dist/hello_output
           inputResources:
             - name: go_example
-            - name: fileSpec
+#             - name: fileSpec
           integrations:
             - name: art_v
         execution:
