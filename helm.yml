@@ -28,6 +28,9 @@ pipelines:
       - name: helm_publish_1
         type: HelmPublish
         configuration:
+          environmentVariables: # optional
+            JFROG_CLI_BUILD_NAME: "rak_test_1"
+            JFROG_CLI_BUILD_NUMBER: 29
 #           helmVersion: 2
           autoPublishBuildInfo: true
 #           helmVersion: 2
