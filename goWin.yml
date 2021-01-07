@@ -39,11 +39,10 @@ pipelines:
             - name: art_v
         execution:
            onStart:
-              - buildDir=$(find_resource_variable $inputGitRepoResourceName resourcePath)
-              - echo "******** buildDir - $buildDir"
-              - pushd $buildDir
-              - go get -insecure
-              - popd
+            - Push-Location $res_go_example_resourcePath
+            - go get -insecure
+            - Pop-Location
+            - go version
            onComplete:
 #               - ls $step_workspace_dir/GoBuild
             
