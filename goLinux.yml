@@ -22,7 +22,7 @@ pipelines:
         configuration:
           environmentVariables:
             JFROG_CLI_BUILD_NAME: go_example_build_publish
-#           sourceLocation: .
+          sourceLocation: .
 #           resolverRepo: go_local
           repository: go_local
 #           noRegistry: true
@@ -32,7 +32,7 @@ pipelines:
           goCommand: build -o /tmp/dist/hello_output
           inputResources:
             - name: go_example
-#             - name: fileSpec
+            - name: fileSpec
           integrations:
             - name: art_v
         execution:
@@ -45,6 +45,6 @@ pipelines:
            onComplete:
 #               - ls $step_workspace_dir/GoBuild
             
-              - cd /tmp/dist
-              - ls
+#               - cd /tmp/dist
+              - ls .
       
