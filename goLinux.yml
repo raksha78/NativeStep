@@ -45,6 +45,6 @@ pipelines:
            onComplete:
 #               - ls $step_workspace_dir/GoBuild
             
-              - cd /dependencyState/resources/fileSpec 
+              - cd dependencyState/resources
               - ls .
       
