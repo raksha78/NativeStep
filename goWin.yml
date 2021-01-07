@@ -30,9 +30,9 @@ pipelines:
             repository: go_local
 #             noRegistry: true
 #             publishDeps: true
-            outputLocation: /tmp/dist/test
-            outputFile: hello_output_win
-            goCommand: build -o /tmp/dist/test/hello_output_win
+#             outputLocation: /tmp/dist/test
+#             outputFile: hello_output_win
+#             goCommand: build -o /tmp/dist/test/hello_output_win
             inputResources:
                 - name: go_example_1
                 - name: fileSpec_1
