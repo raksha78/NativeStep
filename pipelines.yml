@@ -20,14 +20,14 @@ resources:
       buildName: docker_rak_linux
       buildNumber: 1
 
-#   - name: out_img
-#     type: Image
-#     configuration:
-#        registry: art_v
-#        sourceRepository: output_res  # required if Docker registry is Artifactory
-# #        imageName: dev.jfrog-pipelines.com/rak_docker/img 
+  - name: out_img
+    type: Image
+    configuration:
+       registry: art_v
+       sourceRepository: output_res  # required if Docker registry is Artifactory
+       imageName: dev.jfrog-pipelines.com/rak_docker/img 
 #        imageName: fullstack.jfrog-pipelines.com/rak_docker/img 
-#        imageTag: ${run_number}  
+       imageTag: ${run_number}  
        
 
 
@@ -41,8 +41,8 @@ pipelines:
           affinityGroup: Together
           dockerFileLocation: . # optional, defaults to .
           dockerFileName: Dockerfile    # optional, defaults to Dockerfile
-#           dockerImageName: dev.jfrog-pipelines.com/rak_docker/img   
-          dockerImageName: fullstack.jfrog-pipelines.com/docker-local/image 
+          dockerImageName: dev.jfrog-pipelines.com/rak_docker/img   
+#           dockerImageName: fullstack.jfrog-pipelines.com/docker-local/image 
           
           dockerImageTag:  ${run_number}    
           inputResources:
@@ -53,7 +53,8 @@ pipelines:
       - name: pushStep
         type: DockerPush
         configuration:
-          targetRepository: docker-local 
+#           targetRepository: docker-local 
+          targetRepository: rak_docker 
           affinityGroup: Together
 #           autoPublishBuildInfo: true
 #           forceXrayScan: true
@@ -62,7 +63,8 @@ pipelines:
             - name: art_v 
           inputSteps:
             - name: buildStep  
-#           outputResources:
+          outputResources:
 #             - name: docker_rak_linux
+            - name: out_img
             
             
