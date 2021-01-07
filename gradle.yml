@@ -38,6 +38,9 @@ pipelines:
         type: PublishBuildInfo
         
         configuration:
+          environmentVariables: # optional
+            JFROG_CLI_BUILD_NAME: "rak_test_1"
+            JFROG_CLI_BUILD_NUMBER: 29
 #           envInclude: buildinfo.env.*  # optional 
           envExclude: buildinfo.env.* # optional
 #           forceXrayScan: <boolean/string>  # optional, defaults to false
