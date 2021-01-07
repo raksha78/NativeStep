@@ -42,7 +42,7 @@ pipelines:
           dockerFileLocation: . # optional, defaults to .
           dockerFileName: Dockerfile    # optional, defaults to Dockerfile
 #           dockerImageName: dev.jfrog-pipelines.com/rak_docker/img   
-          dockerImageName: fullstack.jfrog-pipelines.com/rak_docker/img 
+          dockerImageName: fullstack.jfrog-pipelines.com/docker-local/image 
           
           dockerImageTag:  ${run_number}    
           inputResources:
@@ -53,16 +53,16 @@ pipelines:
       - name: pushStep
         type: DockerPush
         configuration:
-          targetRepository: rak_docker 
+          targetRepository: docker-local 
           affinityGroup: Together
-          autoPublishBuildInfo: true
+#           autoPublishBuildInfo: true
 #           forceXrayScan: true
 #           failOnScan: false
           integrations:
             - name: art_v 
           inputSteps:
             - name: buildStep  
-          outputResources:
-            - name: docker_rak_linux
+#           outputResources:
+#             - name: docker_rak_linux
             
             
