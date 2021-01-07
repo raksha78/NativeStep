@@ -13,12 +13,12 @@ resources:
       sourceArtifactory: art_v
       pattern: "fileSpec_test/install.sh"
        
-#   - name: docker_rak_linux
-#     type: BuildInfo
-#     configuration:
-#       sourceArtifactory: art_v
-#       buildName: docker_rak_linux
-#       buildNumber: 1
+  - name: docker_rak_linux
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art_v
+      buildName: docker_rak_linux
+      buildNumber: 1
 
   - name: out_img
     type: Image
@@ -44,30 +44,22 @@ pipelines:
           dockerImageTag:  ${run_number}    
           inputResources:
               - name: repo 
-              - name: fileSpec_test_
-#       - name: dowload_linux_1
-#         type: Bash
-#         configuration:
-#           integrations:
-#             - name: art_v
-#           inputResources:
-# #             - name: connecting_resource
-#             - name: fileSpec_test
-#         execution:
-#           onExecute:
-#             - echo $res_fileSpec_test_resourcePath
-#             - ls $res_fileSpec_test_resourcePath
-#       - name: pushStep
-#         type: DockerPush
-#         configuration:
-#           targetRepository: rak_docker 
-#           affinityGroup: Together
-# #           autoPublishBuildInfo: true
-#           integrations:
-#             - name: art_v 
-#           inputSteps:
-#             - name: buildStep  
-#           outputResources:
-#             - name: out_img
+#               - name: fileSpec_test_
+          
+
+      - name: pushStep
+        type: DockerPush
+        configuration:
+          targetRepository: rak_docker 
+          affinityGroup: Together
+          autoPublishBuildInfo: true
+          forceXrayScan: true
+          failOnScan: false
+          integrations:
+            - name: art_v 
+          inputSteps:
+            - name: buildStep  
+          outputResources:
+            - name: docker_rak_linux
             
             
