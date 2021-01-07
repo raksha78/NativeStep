@@ -11,6 +11,12 @@ resources:
       buildName: npm_publish_1
       buildNumber: 1
       
+  - name: fileSpec_test_1
+    type: FileSpec
+    configuration:     
+      sourceArtifactory: art_v
+      pattern: "fileSpec_test/install.sh"
+      
       
 pipelines:
   - name: npm_1
@@ -19,24 +25,30 @@ pipelines:
     steps:
       - name: build_npm_1
         type: NpmBuild
+        execution:
+          onComplete:
+            - cd dependencyState/resources/fileSpec_test_1
+            - ls .
         configuration:
 #           repositoryName: npm-virtual
           resolverRepo: npm-virtual
           sourceLocation: .
+          npmArgs: npm install sax --force
           inputResources:
             - name: npm_repo_1
+            - name: fileSpec_test_1
           integrations:
             - name: art_v
             
-      - name: publish_npm_1
-        type: NpmPublish
-        configuration:
-          autoPublishBuildInfo: true
-          repositoryName: npm-virtual
-          inputSteps:
-            - name: build_npm_1
-          integrations:
-            - name: art_v
-          outputResources:
-            - name: npm_publish_1
+#       - name: publish_npm_1
+#         type: NpmPublish
+#         configuration:
+#           autoPublishBuildInfo: true
+#           repositoryName: npm-virtual
+#           inputSteps:
+#             - name: build_npm_1
+#           integrations:
+#             - name: art_v
+#           outputResources:
+#             - name: npm_publish_1
     
