@@ -1,55 +1,51 @@
 resources:
-  - name: go_example_1
+  - name: go_example
     type: GitRepo
     configuration:
       path: raksha78/NativeStep
       branches:
-        include: powershell
+        include: linux
       gitProvider: raksha78_github
       
-  - name: fileSpec_1
+  - name: fileSpec
     type: FileSpec
     configuration:     
       sourceArtifactory: art_v
       pattern: "fileSpec_test/hello.go"
-      
        
 
 pipelines:
-  - name: go_build_pipeline_1
+  - name: go_build_pipeline
     configuration:
       nodePool: win_2019
     steps:
-      - name: build_go_1
+      - name: build_go
         type: GoBuild
         configuration:
-            environmentVariables:
-                JFROG_CLI_BUILD_NAME: go_example_build_publish
-            sourceLocation: .
-#             resolverRepo: go_local
-            repository: go_local
-#             noRegistry: true
-#             publishDeps: true
-#             outputLocation: /tmp/dist/test
-#             outputFile: hello_output_win
-#             goCommand: build -o /tmp/dist/test/hello_output_win
-            inputResources:
-                - name: go_example_1
-#                 - name: fileSpec_1
-            integrations:
-                - name: art_v
+          environmentVariables:
+            JFROG_CLI_BUILD_NAME: go_example_build_publish
+          sourceLocation: .
+#           resolverRepo: go_local
+          repository: go_local
+#           noRegistry: true
+#           publishDeps: true
+          outputLocation: /tmp/dist
+          outputFile: hello_output
+          goCommand: build -o /tmp/dist/hello_output
+          inputResources:
+            - name: go_example
+#             - name: fileSpec
+          integrations:
+            - name: art_v
         execution:
-            onStart:
-                - $res_go_example_1_resourcePath
-                - Push-Location $res_go_example_1_resourcePath
-                - go get -insecure
-                - Pop-Location
-                - go version
-            onComplete:
-                - pwd
-#                 - ls $step_workspace_dir/GoBuild
-                - cd dependencyState/resources
-                - ls .
-                
-     
-       
+           onStart:
+              - buildDir=$(find_resource_variable $inputGitRepoResourceName resourcePath)
+              - echo "******** buildDir - $buildDir"
+              - pushd $buildDir
+              - go get -insecure
+              - popd
+           onComplete:
+#               - ls $step_workspace_dir/GoBuild
+            
+              - cd dependencyState/resources/fileSpec
+              - ls .
