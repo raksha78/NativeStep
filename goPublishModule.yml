@@ -1,30 +1,30 @@
 resources:
-  - name: go_example_1
+  - name: go_example
     type: GitRepo
     configuration:
       path: raksha78/NativeStep
       branches:
-        include: powershell
+        include: linux
       gitProvider: raksha78_github
       
-  - name: fileSpec_publish_1
+  - name: fileSpec_publish
     type: FileSpec
     configuration:     
       sourceArtifactory: art_v
       pattern: "fileSpec_test/hello.go"
       
-#   - name: go_rak_1
+#   - name: go_rak
 #     type: BuildInfo
 #     configuration:
 #       sourceArtifactory: art_v
          
 
 pipelines:
-  - name: go_build_pipeline_1
+  - name: go_build_pipeline
     configuration:
       nodePool: win_2019
     steps:
-      - name: publish_go_module_1
+      - name: publish_go_module
         type: GoPublishModule
         execution:
            onComplete:
@@ -35,14 +35,14 @@ pipelines:
             JFROG_CLI_BUILD_NAME: go_example_module_publish
 #           sourceLocation: .
           version: v0.0.0
-          self: true
           deps: ALL
+          self: true
           targetRepository: go_local
 #           autoPublishBuildInfo: true
           integrations:
             - name: art_v
           inputResources:
-            - name: go_example_1
-            - name: fileSpec_publish_1
+            - name: go_example
+            - name: fileSpec_publish
 #           outputResources:
-#             - name: go_rak_1
+#             - name: go_rak
