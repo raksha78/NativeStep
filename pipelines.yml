@@ -56,8 +56,8 @@ pipelines:
           targetRepository: rak_docker 
           affinityGroup: Together
           autoPublishBuildInfo: true
-          forceXrayScan: true
-          failOnScan: false
+#           forceXrayScan: true
+#           failOnScan: false
           integrations:
             - name: art_v 
           inputSteps:
