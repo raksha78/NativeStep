@@ -50,7 +50,7 @@ pipelines:
           #inherits from bash
           helmVersion: 2         # optional, defaults to 2
 #           flags: -n pipe-master-pool                   # optional
-          flags: --namespace                 # optional
+          flags: --namespace pipe-master-pool              # optional
           
 #           valueFilePaths:                       # optional
 #             - <path and filename>
