@@ -49,7 +49,7 @@ pipelines:
           inputSteps:
             - name: build_go
           forceXrayScan: true
-          failOnScan: false
+#           failOnScan: false
           targetRepository: go_local
           integrations:
             - name: art_v
