@@ -81,7 +81,6 @@ pipelines:
       - name: Pushlish
         type: PublishBuildInfo
         configuration:
-          autoPublishBuildInfo: true
           inputSteps:
             - name: To_Push_Docker_Image_1
           outputResources:
