@@ -46,6 +46,9 @@ pipelines:
             
       - name: HelmDeploy
         type: HelmDeploy
+        execution:
+          onStart:
+            - kubectl config set-context --current --namespace=pipe-master-pool 
         configuration:
           #inherits from bash
           helmVersion: 2         # optional, defaults to 2
