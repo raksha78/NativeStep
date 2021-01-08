@@ -29,7 +29,7 @@ resources:
 pipelines: 
   - name: dockerPipe01
     configuration:
-      nodePool: win_2019
+      nodePool: win_2019-1
     steps:
       - name: To_build_Docker_Image_2
         type: DockerBuild
