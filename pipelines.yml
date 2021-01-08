@@ -82,7 +82,7 @@ pipelines:
         type: PublishBuildInfo
         configuration:
           forceXrayScan: true
-          failOnScan: false
+#           failOnScan: false
           inputSteps:
             - name: To_Push_Docker_Image_1
           outputResources:
