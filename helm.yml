@@ -52,7 +52,7 @@ pipelines:
           flags: --debug                    # optional
 #           valueFilePaths:                       # optional
 #             - <path and filename>
-#           releaseName: release_test
+          releaseName: release_test
           chartPath: stable/tomcat
 #           dryRun: true   # optional, only deploys if the dryrun is success
 #           lint: true # lints chart before upgrade, default false
