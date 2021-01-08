@@ -11,8 +11,7 @@ pipelines:
     steps:
       - name: buildinfo_bash_step
         type: Bash
-        integrations:
-          - name: art_v
+      
         execution:
           onExecute:
             - add_run_variables buildName=publishBuildInfo buildNumber=${run_number}
