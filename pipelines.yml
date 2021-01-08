@@ -12,45 +12,47 @@ resources:
       sourceArtifactory: art_v
       buildName: docker_rak_win
       buildNumber: 1
-  - name: fileSpec_test_1
-    type: FileSpec
-    configuration:     
-      sourceArtifactory: art_v
-      pattern: "fileSpec_test/install.ps1"
+#   - name: fileSpec_test_1
+#     type: FileSpec
+#     configuration:     
+#       sourceArtifactory: art_v
+#       pattern: "fileSpec_test/install.ps1"
       
-  - name: out_img_1
-    type: Image
-    configuration:
-       registry: art_v
-       sourceRepository: output_res  # required if Docker registry is Artifactory
-       imageName: dev.jfrog-pipelines.com/output_res/img 
-       imageTag: ${run_number}  
+#   - name: out_img_1
+#     type: Image
+#     configuration:
+#        registry: art_v
+#        sourceRepository: output_res  # required if Docker registry is Artifactory
+#        imageName: dev.jfrog-pipelines.com/output_res/img 
+#        imageTag: ${run_number}  
 
 pipelines: 
-  - name: dockerPipe_1
-    configuration:
-      nodePool: win_2019
+  - name: dockerPipe_01
     steps:
-      - name: buildStep_1
+      - name: To_build_Docker_Image_2
         type: DockerBuild
         configuration:
-          affinityGroup: Together
-          dockerFileLocation: . # optional, defaults to .
-          dockerFileName: Dockerfile    # optional, defaults to Dockerfile
-          dockerImageName: dev.jfrog-pipelines.com/rak_docker/img   
-          dockerImageTag:  ${run_number}    
+          affinityGroup: BasicTest
+          dockerFileLocation: .
+          dockerFileName: Dockerfile
+          dockerImageName: fullstack.jfrog-pipelines.com/docker-local/node
+          dockerImageTag: latest
+          integrations:
+            - name: art_v
           inputResources:
-              - name: repo_1
-              - name: fileSpec_test_1
-      - name: pushStep_1
+            - name: repo_1
+            
+      - name: To_Push_Docker_Image_2
         type: DockerPush
         configuration:
-          targetRepository: output_res 
-          affinityGroup: Together
-#           autoPublishBuildInfo: true
+          affinityGroup: BasicTest
+          autoPublishBuildInfo: true
+          forceXrayScan: true
+          failOnScan: false
+          targetRepository: docker-local
           integrations:
-            - name: art_v 
+            - name: art_v
           inputSteps:
-            - name: buildStep_1
+            - name: To_build_Docker_Image_2
           outputResources:
-            - name: out_img_1
+            - name: docker_rak_win
