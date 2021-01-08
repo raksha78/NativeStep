@@ -16,7 +16,7 @@ resources:
   - name: docker_rak_linux
     type: BuildInfo
     configuration:
-      sourceArtifactory: art_v
+      sourceArtifactory: art_win
       buildName: docker_rak_linux
       buildNumber: 1
       
@@ -50,7 +50,7 @@ pipelines:
           dockerImageName: fullstack.jfrog-pipelines.com/docker-local/node
           dockerImageTag: latest
           integrations:
-            - name: art_v
+            - name: art_win
           inputResources:
             - name: repo
 #             - name: connecting_resource_1
@@ -64,7 +64,7 @@ pipelines:
 #           failOnScan: false
           targetRepository: docker-local
           integrations:
-            - name: art_v
+            - name: art_win
           inputSteps:
             - name: To_build_Docker_Image_1
           outputResources:
