@@ -12,7 +12,7 @@ pipelines:
       - name: xray
         type: XrayScan
         configuration:
-          failOnScan:false
+          failOnScan: false
           inputResources:
             - name: npm_build_info
               trigger: false
