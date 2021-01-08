@@ -73,5 +73,5 @@ pipelines:
             image:
               auto:
                 language: node
-                versions: 12.18.2
+                versions: [ 12.18.2 ]
          
