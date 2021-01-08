@@ -60,7 +60,7 @@ pipelines:
 #           test: true   # runs helm test after upgrade, default false
 #           testFlags: --parallel
           integrations:
-            - name: s_kubernetes               # required
+            - name: kube               # required
           inputResources:
             - name: helm_repo_test        # required
          
