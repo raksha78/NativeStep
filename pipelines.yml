@@ -27,7 +27,7 @@ resources:
 #        imageTag: ${run_number}  
 
 pipelines: 
-  - name: dockerPipe_01
+  - name: dockerPipe01
     steps:
       - name: To_build_Docker_Image_2
         type: DockerBuild
