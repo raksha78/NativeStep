@@ -12,7 +12,7 @@ pipelines:
       nodePool: win_2019
     steps:
       - name: buildinfo_bash_step
-        type: Bash
+        type: PowerShell
       
         execution:
           onExecute:
