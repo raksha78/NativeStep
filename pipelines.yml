@@ -61,7 +61,7 @@ pipelines:
           affinityGroup: BasicTest
           autoPublishBuildInfo: true
           forceXrayScan: true
-          failOnScan: false
+#           failOnScan: false
           targetRepository: docker-local
           integrations:
             - name: art_v
