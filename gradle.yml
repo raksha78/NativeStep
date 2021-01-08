@@ -27,9 +27,10 @@ pipelines:
         configuration:
           sourceLocation: gradle-examples/gradle-jcenter-resolve
           gradleCommand:  clean artifactoryPublish -b build.gradle
-#           gradleCommand: build.gradle
+          forceXrayScan: true
+          failOnScan: false
           configFileLocation: .
-#           autoPublishBuildInfo: true
+          autoPublishBuildInfo: true
           configFileName: gradle-art-config
           resolverRepo: jcenter
 #           deployerRepo: gradle-local
@@ -38,8 +39,8 @@ pipelines:
 #             - name: fileSpec_gradle
           integrations:
             - name: art_v
-#           outputResources:
-#             - name: gradle_rak
+          outputResources:
+            - name: gradle_rak
         execution:
           onStart:
             - javac -version
