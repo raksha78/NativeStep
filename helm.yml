@@ -55,10 +55,10 @@ pipelines:
           releaseName: release_test
           chartPath: stable/tomcat
           dryRun: true   # optional, only deploys if the dryrun is success
-          lint: true # lints chart before upgrade, default false
-          lintFlags: “--strict”
-          test: true   # runs helm test after upgrade, default false
-          testFlags: “--parallel”
+#           lint: true # lints chart before upgrade, default false
+#           lintFlags: --help
+#           test: true   # runs helm test after upgrade, default false
+#           testFlags: “--parallel”
           integrations:
             - name: s_kubernetes               # required
           inputResources:
