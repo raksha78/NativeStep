@@ -3,7 +3,7 @@ resources:
     type: GitRepo
     configuration:
       gitProvider: raksha78_github
-      path:r aksha78/hello-helm
+      path: raksha78/hello-helm
    
   - name: helm_repo_test
     type: HelmChart
