@@ -1,9 +1,9 @@
 resources:    
-  - name: gradle_rak
+  - name: outputBuildInfo
     type: BuildInfo
     configuration:
       sourceArtifactory: art_v
-      buildName: build_rak
+      buildName: outputBuildInfo
       buildNumber: 9
 
 - name: publishBuildInfo_pipeline
