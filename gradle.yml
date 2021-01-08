@@ -23,11 +23,11 @@ pipelines:
 #           failOnScan: false
           configFileLocation: .
           autoPublishBuildInfo: true
-#           configFileName: gradle-art-config
+          configFileName: gradle-art-config
 #           resolverRepo: jcenter
 #           deployerRepo: gradle-local
-#           usesPlugin: true
-#           useWrapper: true
+          usesPlugin: true
+          useWrapper: true
           inputResources:
             - name: gradle_repository_1
           integrations:
