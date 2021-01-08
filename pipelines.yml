@@ -9,7 +9,7 @@ resources:
   - name: docker_rak_win
     type: BuildInfo
     configuration:
-      sourceArtifactory: art_v
+      sourceArtifactory: art_win
       buildName: docker_rak_win
       buildNumber: 1
 #   - name: fileSpec_test_1
@@ -40,7 +40,7 @@ pipelines:
           dockerImageName: fullstack.jfrog-pipelines.com/docker-local/node
           dockerImageTag: latest
           integrations:
-            - name: art_v
+            - name: art_win
           inputResources:
             - name: repo_1
             
@@ -53,7 +53,7 @@ pipelines:
           failOnScan: false
           targetRepository: docker-local
           integrations:
-            - name: art_v
+            - name: art_win
           inputSteps:
             - name: To_build_Docker_Image_2
           outputResources:
