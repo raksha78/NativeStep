@@ -21,9 +21,9 @@ pipelines:
           gradleCommand:  clean artifactoryPublish -b build.gradle
 #           forceXrayScan: true
 #           failOnScan: false
-          configFileLocation: .
+#           configFileLocation: .
           autoPublishBuildInfo: true
-          configFileName: gradle-art-config
+#           configFileName: gradle-art-config
 #           resolverRepo: jcenter
 #           deployerRepo: gradle-local
           usesPlugin: true
