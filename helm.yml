@@ -10,8 +10,8 @@ resources:
     configuration: 
       sourceArtifactory: art_v
       repository: helm-local
-      chart: test
-      version: 1.0.0
+      chart: tomcat
+      version: 0.1.0
       
   - name: helm_build
     type: BuildInfo
@@ -54,11 +54,11 @@ pipelines:
 #             - <path and filename>
           releaseName: test1
           chartPath: stable/tomcat
-#           dryRun: true   # optional, only deploys if the dryrun is success
-#           lint: true # lints chart before upgrade, default false
-#           lintFlags: --help
-#           test: true   # runs helm test after upgrade, default false
-#           testFlags: “--parallel”
+          dryRun: true   # optional, only deploys if the dryrun is success
+          lint: true # lints chart before upgrade, default false
+          lintFlags: --help
+          test: true   # runs helm test after upgrade, default false
+          testFlags: --parallel
           integrations:
             - name: s_kubernetes               # required
           inputResources:
