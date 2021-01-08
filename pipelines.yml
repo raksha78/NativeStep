@@ -20,6 +20,13 @@ resources:
       buildName: docker_rak_linux
       buildNumber: 1
       
+  - name: docker_rak_linux_output
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art_win
+      buildName: docker_rak_linux_output
+      buildNumber: 1
+      
 #   - name: connecting_resource_1
 #     type: PropertyBag
 #     configuration:
@@ -60,7 +67,7 @@ pipelines:
         configuration:
           affinityGroup: BasicTest
           autoPublishBuildInfo: true
-          forceXrayScan: true
+#           forceXrayScan: true
 #           failOnScan: false
           targetRepository: docker-local
           integrations:
@@ -69,4 +76,26 @@ pipelines:
             - name: To_build_Docker_Image_1
           outputResources:
             - name: docker_rak_linux
+            
+            
+      - name: Pushlish
+        type: PublishBuildInfo
+        configuration:
+          autoPublishBuildInfo: true
+          inputSteps:
+            - name: To_Push_Docker_Image_1
+          outputResources:
+            - name: docker_rak_linux 
+            
+      - name: xray
+        type: XrayScan
+        configuration:
+          failOnScan: false
+          
+          inputResources:
+            - name: docker_rak_linux
+              trigger: false
+          outputResources:
+            - name: docker_rak_linux_output
+          
             
