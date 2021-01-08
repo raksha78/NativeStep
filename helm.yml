@@ -67,5 +67,11 @@ pipelines:
           integrations:
             - name: kube               # required
           inputResources:
-            - name: gitRepo        # required
+            - name: gitRepo     
+          runtime:           
+            type: image
+            image:
+              auto:
+                language: node
+                versions: 12.18.2
          
