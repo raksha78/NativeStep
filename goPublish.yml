@@ -7,17 +7,17 @@ resources:
         include: powershell
       gitProvider: raksha78_github
       
-#   - name: go_rak_1
-#     type: BuildInfo
-#     configuration:
-#       sourceArtifactory: art_v
-#       buildName: go_rak_1
-#       buildNumber: 1      
+  - name: go_rak_1
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art_v
+      buildName: go_rak_1
+      buildNumber: 1      
 
 pipelines:
   - name: go_build_pipeline_1
     configuration:
-      nodePool: win_2019
+      nodePool: win-2019-1
     steps:
       - name: build_go_1
         type: GoBuild
@@ -51,13 +51,15 @@ pipelines:
       - name: publish_go_binary_1
         type: GoPublishBinary
         configuration:
-#           autoPublishBuildInfo: true
+          autoPublishBuildInfo: true
+          forceXrayScan: true
+          failOnScan: false
           inputSteps:
             - name: build_go_1
           targetRepository: go_local
           integrations:
             - name: art_v
-#           outputResources:
-#             - name: go_rak_1
+          outputResources:
+            - name: go_rak_1
              
      
