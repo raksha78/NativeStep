@@ -3,7 +3,7 @@ resources:
     type: GitRepo
     configuration:
       gitProvider: raksha78_github
-      path: raksha78/charts
+      path: raksha78/hello-helm
    
   - name: helm_repo_test
     type: HelmChart
@@ -58,7 +58,7 @@ pipelines:
 #           valueFilePaths:                       # optional
 #             - <path and filename>
           releaseName: test1
-          chartPath: stable/tomcat
+          chartPath: chart/hello
           dryRun: true   # optional, only deploys if the dryrun is success
           lint: true # lints chart before upgrade, default false
           lintFlags: --help
