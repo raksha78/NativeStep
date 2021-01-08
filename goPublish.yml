@@ -7,12 +7,12 @@ resources:
         include: linux
       gitProvider: raksha78_github
       
-#   - name: go_rak
-#     type: BuildInfo
-#     configuration:
-#       sourceArtifactory: art_v
-#       buildName: go_rak
-#       buildNumber: 1      
+  - name: go_rak
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art_v
+      buildName: go_rak
+      buildNumber: 1      
 
 pipelines:
   - name: go_build_pipeline
@@ -45,12 +45,14 @@ pipelines:
       - name: publish_go_binary
         type: GoPublishBinary
         configuration:
-#           autoPublishBuildInfo: true
+          autoPublishBuildInfo: true
           inputSteps:
             - name: build_go
+          forceXrayScan: true
+          failOnScan: false
           targetRepository: go_local
           integrations:
             - name: art_v
-#           outputResources:
-#             - name: go_rak
+          outputResources:
+            - name: go_rak
              
