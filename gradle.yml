@@ -27,8 +27,8 @@ pipelines:
         configuration:
           sourceLocation: gradle-examples/gradle-jcenter-resolve
           gradleCommand:  clean artifactoryPublish -b build.gradle
-          forceXrayScan: true
-          failOnScan: false
+#           forceXrayScan: true
+#           failOnScan: false
 #           configFileLocation: .
           autoPublishBuildInfo: true
           forceXrayScan: true
