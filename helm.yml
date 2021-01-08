@@ -58,7 +58,7 @@ pipelines:
 #           valueFilePaths:                       # optional
 #             - <path and filename>
           releaseName: test1
-          chartPath: chart/hello
+          chartPath: ./chart/hello
           dryRun: true   # optional, only deploys if the dryrun is success
           lint: true # lints chart before upgrade, default false
           lintFlags: --help
