@@ -1,0 +1,25 @@
+resources:
+  - name: npm_build_info
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art_v
+      buildName: npm_publish
+      buildNumber: 1
+      
+pipelines:
+  - name: xray
+    steps:  
+      - name: xray
+        type: XrayScan
+        configuration:
+          failOnScan:false
+          inputResources:
+            - name: npm_build_info
+              trigger: false
+          outputResources:
+            - name: npm_build_info
+            
+     
+     
+            
+      
