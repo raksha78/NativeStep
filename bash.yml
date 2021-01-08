@@ -6,21 +6,22 @@ resources:
       buildName: outputBuildInfo
       buildNumber: 9
 
-- name: publishBuildInfo_pipeline
-  steps:
-    - name: buildinfo_bash_step
-      type: Bash
-      integrations:
-        - name: art_v
-      execution:
-        onExecute:
-          - add_run_variables buildName=publishBuildInfo buildNumber=${run_number}
-          - jfrog rt build-collect-env $buildName $buildNumber
-          - add_run_files /tmp/jfrog/. jfrog
-    - name: publishBuildInfo
-      type: PublishBuildInfo
-      configuration:
-        inputSteps:
-          - name: buildinfo_bash_step
-        outputResources:
-          - name: outputBuildInfo
+pipelines:
+  - name: publishBuildInfo_pipeline
+    steps:
+      - name: buildinfo_bash_step
+        type: Bash
+        integrations:
+          - name: art_v
+        execution:
+          onExecute:
+            - add_run_variables buildName=publishBuildInfo buildNumber=${run_number}
+            - jfrog rt build-collect-env $buildName $buildNumber
+            - add_run_files /tmp/jfrog/. jfrog
+      - name: publishBuildInfo
+        type: PublishBuildInfo
+        configuration:
+          inputSteps:
+            - name: buildinfo_bash_step
+          outputResources:
+            - name: outputBuildInfo
