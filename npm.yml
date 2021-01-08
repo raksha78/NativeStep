@@ -21,10 +21,10 @@ pipelines:
     steps:
       - name: build_npm
         type: NpmBuild
-        execution:
-          onComplete:
-            - cd dependencyState/resources/fileSpec_test
-            - ls .
+#         execution:
+#           onComplete:
+#             - cd dependencyState/resources/fileSpec_test
+#             - ls .
         configuration:
           repositoryName: npm-virtual
 #           resolverRepo: npm-virtual
