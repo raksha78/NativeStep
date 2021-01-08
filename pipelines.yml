@@ -20,11 +20,11 @@ resources:
       buildName: docker_rak_linux
       buildNumber: 1
       
-  - name: connecting_resource_1
-    type: PropertyBag
-    configuration:
-      key1: value1
-      key2: value2
+#   - name: connecting_resource_1
+#     type: PropertyBag
+#     configuration:
+#       key1: value1
+#       key2: value2
 
 #   - name: out_img
 #     type: Image
@@ -53,7 +53,7 @@ pipelines:
             - name: art_v
           inputResources:
             - name: repo
-            - name: connecting_resource_1
+#             - name: connecting_resource_1
             
       - name: To_Push_Docker_Image_1
         type: DockerPush
