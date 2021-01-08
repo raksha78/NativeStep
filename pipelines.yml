@@ -20,7 +20,7 @@ resources:
       buildName: docker_rak_linux
       buildNumber: 1
       
-   - name: connecting_resource
+  - name: connecting_resource
     type: PropertyBag
     configuration:
       key1: value1
@@ -41,7 +41,7 @@ resources:
 pipelines: 
   - name: dockerPipe
     steps:
-      - name: To_build_Docker_Image
+      - name: To_build_Docker_Image_1
         type: DockerBuild
         configuration:
           affinityGroup: BasicTest
@@ -53,9 +53,9 @@ pipelines:
             - name: art_v
           inputResources:
             - name: repo
-            - name: connecting_resource
+            - name: connecting_resource_1
             
-      - name: To_Push_Docker_Image
+      - name: To_Push_Docker_Image_1
         type: DockerPush
         configuration:
           affinityGroup: BasicTest
@@ -66,7 +66,7 @@ pipelines:
           integrations:
             - name: art_v
           inputSteps:
-            - name: To_build_Docker_Image
+            - name: To_build_Docker_Image_1
           outputResources:
-            - name: ns_buildInfo
+            - name: docker_rak_linux
             
