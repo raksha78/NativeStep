@@ -13,10 +13,10 @@ resources:
 #       sourceArtifactory: art_v
 #       pattern: "fileSpec_test/hello.go"
       
-#   - name: go_rak
-#     type: BuildInfo
-#     configuration:
-#       sourceArtifactory: art_v
+  - name: go_rak
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art_v
          
 
 pipelines:
@@ -38,11 +38,11 @@ pipelines:
           forceXrayScan: true
           failOnScan: false
           targetRepository: go_local
-#           autoPublishBuildInfo: true
+          autoPublishBuildInfo: true
           integrations:
             - name: art_v
           inputResources:
             - name: go_example
 #             - name: fileSpec_publish
-#           outputResources:
-#             - name: go_rak
+          outputResources:
+            - name: go_rak
