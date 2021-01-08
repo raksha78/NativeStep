@@ -17,7 +17,7 @@ resources:
 pipelines:
   - name: go_build_pipeline_1
     configuration:
-      nodePool: win-2019-1
+      nodePool: win_2019
     steps:
       - name: build_go_1
         type: GoBuild
