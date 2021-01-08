@@ -48,8 +48,10 @@ pipelines:
         type: HelmDeploy
         configuration:
           #inherits from bash
-          helmVersion: 3              # optional, defaults to 2
-          flags: -n pipe-master-pool                   # optional
+          helmVersion: 2         # optional, defaults to 2
+#           flags: -n pipe-master-pool                   # optional
+          flags: --namespace                 # optional
+          
 #           valueFilePaths:                       # optional
 #             - <path and filename>
           releaseName: test1
