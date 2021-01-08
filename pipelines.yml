@@ -81,6 +81,8 @@ pipelines:
       - name: Pushlish
         type: PublishBuildInfo
         configuration:
+          forceXrayScan: true
+          failOnScan: false
           inputSteps:
             - name: To_Push_Docker_Image_1
           outputResources:
@@ -89,7 +91,7 @@ pipelines:
       - name: xray
         type: XrayScan
         configuration:
-          failOnScan: false
+#           failOnScan: false
           
           inputResources:
             - name: docker_rak_linux
