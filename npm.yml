@@ -40,7 +40,7 @@ pipelines:
         configuration:
           autoPublishBuildInfo: true
           forceXrayScan: true
-          failOnScan: false
+#           failOnScan: false
           repositoryName: npm-virtual
           inputSteps:
             - name: build_npm
