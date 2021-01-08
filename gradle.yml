@@ -25,15 +25,17 @@ pipelines:
       - name: gradle_build_step
         type: GradleBuild
         configuration:
-          sourceLocation: gradle-examples/gradle-example-minimal
+          sourceLocation: gradle-examples/gradle-jcenter-resolve
           gradleCommand:  clean artifactoryPublish -b build.gradle
           forceXrayScan: true
           failOnScan: false
           configFileLocation: .
           autoPublishBuildInfo: true
-#           configFileName: gradle-art-config
-#           resolverRepo: jcenter
-#           deployerRepo: gradle-local
+          configFileName: gradle-art-config
+          resolverRepo: jcenter
+          deployerRepo: gradle-local
+          usesPlugin: true
+          useWrapper: true
           inputResources:
             - name: gradle_repository
 #             - name: fileSpec_gradle
