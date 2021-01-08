@@ -62,5 +62,5 @@ pipelines:
           integrations:
             - name: kube               # required
           inputResources:
-            - name: helm_repo_test        # required
+            - name: gitRepo        # required
          
