@@ -2,20 +2,50 @@ resources:
   - name: npm_repo
     type: GitRepo
     configuration:
-      path: vijayreddy1991/npmHelloWorld
-      gitProvider: vijay_git
-      
+      path: raksha78/npmHelloWorld
+      gitProvider: raksha78_github
+  - name: npm_publish
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art_v
+      buildName: npm_publish
+      buildNumber: 1
+#   - name: fileSpec_test
+#     type: FileSpec
+#     configuration:     
+#       sourceArtifactory: art_v
+#       pattern: "fileSpec_test/install.sh"
       
 pipelines:
   - name: npm
     steps:
       - name: build_npm
         type: NpmBuild
+        execution:
+          onComplete:
+            - cd dependencyState/resources/fileSpec_test
+            - ls .
         configuration:
           repositoryName: npm-virtual
+#           resolverRepo: npm-virtual
           sourceLocation: .
+#           npmArgs: npm install sax --force
           inputResources:
             - name: npm_repo
+#             - name: fileSpec_test
           integrations:
             - name: art_v
-    
+      - name: publish_npm
+        type: NpmPublish
+        configuration:
+          autoPublishBuildInfo: true
+          forceXrayScan: true
+          failOnScan: false
+          repositoryName: npm-virtual
+          inputSteps:
+            - name: build_npm
+           
+          integrations:
+            - name: art_v
+          outputResources:
+            - name: npm_publish
