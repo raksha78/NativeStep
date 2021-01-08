@@ -49,16 +49,16 @@ pipelines:
         configuration:
           #inherits from bash
           helmVersion: 2                # optional, defaults to 2
-          flags: --debug                    # optional
+#           flags: --debug                    # optional
 #           valueFilePaths:                       # optional
 #             - <path and filename>
           releaseName: test1
           chartPath: stable/tomcat
-          dryRun: true   # optional, only deploys if the dryrun is success
-          lint: true # lints chart before upgrade, default false
-          lintFlags: --help
-          test: true   # runs helm test after upgrade, default false
-          testFlags: --parallel
+#           dryRun: true   # optional, only deploys if the dryrun is success
+#           lint: true # lints chart before upgrade, default false
+#           lintFlags: --help
+#           test: true   # runs helm test after upgrade, default false
+#           testFlags: --parallel
           integrations:
             - name: s_kubernetes               # required
           inputResources:
