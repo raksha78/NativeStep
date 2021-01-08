@@ -21,13 +21,13 @@ pipelines:
           gradleCommand:  clean artifactoryPublish -b build.gradle
 #           forceXrayScan: true
 #           failOnScan: false
-          configFileLocation: .
+#           configFileLocation: .
           autoPublishBuildInfo: true
           configFileName: gradle-art-config
-          resolverRepo: jcenter
-          deployerRepo: gradle-local
-          usesPlugin: true
-          useWrapper: true
+#           resolverRepo: jcenter
+#           deployerRepo: gradle-local
+#           usesPlugin: true
+#           useWrapper: true
           inputResources:
             - name: gradle_repository_1
           integrations:
