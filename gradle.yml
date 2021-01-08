@@ -29,11 +29,11 @@ pipelines:
           gradleCommand:  clean artifactoryPublish -b build.gradle
           forceXrayScan: true
           failOnScan: false
-          configFileLocation: .
+#           configFileLocation: .
           autoPublishBuildInfo: true
-          configFileName: gradle-art-config
-          resolverRepo: jcenter
-          deployerRepo: gradle-local
+#           configFileName: gradle-art-config
+#           resolverRepo: jcenter
+#           deployerRepo: gradle-local
           usesPlugin: true
           useWrapper: true
           inputResources:
