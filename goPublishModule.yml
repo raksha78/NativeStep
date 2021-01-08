@@ -36,7 +36,7 @@ pipelines:
 #           deps: ALL
 #           self: true
           forceXrayScan: true
-          failOnScan: false
+#           failOnScan: false
           targetRepository: go_local
           autoPublishBuildInfo: true
           integrations:
