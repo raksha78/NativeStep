@@ -1,0 +1,28 @@
+resources:    
+  - name: outputBuildInfo
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art_v
+      buildName: outputBuildInfo
+      buildNumber: 9
+
+pipelines:
+  - name: publishBuildInfo_pipeline
+    configuration:
+      nodePool: win_2019
+    steps:
+      - name: buildinfo_bash_step
+        type: Bash
+      
+        execution:
+          onExecute:
+            - add_run_variables buildName=publishBuildInfo buildNumber=${run_number}
+            - jfrog rt build-collect-env $buildName $buildNumber
+            - add_run_files /tmp/jfrog/. jfrog
+      - name: publishBuildInfo
+        type: PublishBuildInfo
+        configuration:
+          inputSteps:
+            - name: buildinfo_bash_step
+          outputResources:
+            - name: outputBuildInfo
