@@ -32,8 +32,8 @@ pipelines:
 #           configFileLocation: .
           autoPublishBuildInfo: true
 #           configFileName: gradle-art-config
-          resolverRepo: jcenter
-          deployerRepo: gradle-local
+#           resolverRepo: jcenter
+#           deployerRepo: gradle-local
 #           usesPlugin: true
 #           useWrapper: true
           inputResources:
