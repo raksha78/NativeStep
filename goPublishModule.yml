@@ -33,8 +33,8 @@ pipelines:
             JFROG_CLI_BUILD_NAME: go_example_module_publish
           sourceLocation: .
           version: v0.0.0
-          deps: ALL
-          self: true
+#           deps: ALL
+#           self: true
           forceXrayScan: true
           failOnScan: false
           targetRepository: go_local
