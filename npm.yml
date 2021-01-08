@@ -10,11 +10,11 @@ resources:
       sourceArtifactory: art_v
       buildName: npm_publish
       buildNumber: 1
-  - name: fileSpec_test
-    type: FileSpec
-    configuration:     
-      sourceArtifactory: art_v
-      pattern: "fileSpec_test/install.sh"
+#   - name: fileSpec_test
+#     type: FileSpec
+#     configuration:     
+#       sourceArtifactory: art_v
+#       pattern: "fileSpec_test/install.sh"
       
 pipelines:
   - name: npm
