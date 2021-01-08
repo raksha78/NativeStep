@@ -19,13 +19,14 @@ pipelines:
         type: XrayScan
         configuration:
 #           autoPublishBuildInfo: true
-          failOnScan: false
+          
 #           forceXrayScan: true
           inputResources:
             - name: build_info
               trigger: false
           outputResources:
             - name: build_info_1
+          failOnScan: false
             
      
      
