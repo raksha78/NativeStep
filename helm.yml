@@ -46,12 +46,12 @@ pipelines:
             
       - name: HelmDeploy
         type: HelmDeploy
-        execution:
-          onStart:
-            - kubectl config set-context --current --namespace=pipe-master-pool 
+#         execution:
+#           onStart:
+#             - kubectl config set-context --current --namespace=pipe-master-pool 
         configuration:
           #inherits from bash
-          helmVersion: 2         # optional, defaults to 2
+          helmVersion: 3      # optional, defaults to 2
 #           flags: -n pipe-master-pool                   # optional
           flags: --namespace pipe-master-pool              # optional
           
@@ -59,11 +59,11 @@ pipelines:
 #             - <path and filename>
           releaseName: test1
           chartPath: stable/tomcat
-#           dryRun: true   # optional, only deploys if the dryrun is success
-#           lint: true # lints chart before upgrade, default false
-#           lintFlags: --help
-#           test: true   # runs helm test after upgrade, default false
-#           testFlags: --parallel
+          dryRun: true   # optional, only deploys if the dryrun is success
+          lint: true # lints chart before upgrade, default false
+          lintFlags: --help
+          test: true   # runs helm test after upgrade, default false
+          testFlags: --parallel
           integrations:
             - name: kube               # required
           inputResources:
