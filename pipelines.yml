@@ -19,6 +19,12 @@ resources:
       sourceArtifactory: art_v
       buildName: docker_rak_linux
       buildNumber: 1
+      
+   - name: connecting_resource
+    type: PropertyBag
+    configuration:
+      key1: value1
+      key2: value2
 
 #   - name: out_img
 #     type: Image
@@ -33,38 +39,34 @@ resources:
 
 
 pipelines: 
-  - name: dockerPipe_01
+  - name: dockerPipe
     steps:
-      - name: buildStep
+      - name: To_build_Docker_Image
         type: DockerBuild
         configuration:
-          affinityGroup: Together
-          dockerFileLocation: . # optional, defaults to .
-          dockerFileName: Dockerfile    # optional, defaults to Dockerfile
-#           dockerImageName: dev.jfrog-pipelines.com/rak_docker/img   
-          dockerImageName: fullstack.jfrog-pipelines.com/docker-local/image 
-          
-          dockerImageTag:  ${run_number}    
+          affinityGroup: BasicTest
+          dockerFileLocation: .
+          dockerFileName: Dockerfile
+          dockerImageName: fullstack.jfrog-pipelines.com/docker-local/node
+          dockerImageTag: latest
+          integrations:
+            - name: art_v
           inputResources:
-              - name: repo 
-#               - name: fileSpec_test_
-          
-
-      - name: pushStep
+            - name: repo
+            - name: connecting_resource
+            
+      - name: To_Push_Docker_Image
         type: DockerPush
         configuration:
-          targetRepository: docker-local 
-#           targetRepository: rak_docker 
-          affinityGroup: Together
-#           autoPublishBuildInfo: true
+          affinityGroup: BasicTest
+          autoPublishBuildInfo: true
           forceXrayScan: true
           failOnScan: false
+          targetRepository: docker-local
           integrations:
-            - name: art_v 
+            - name: art_v
           inputSteps:
-            - name: buildStep  
+            - name: To_build_Docker_Image
           outputResources:
-            - name: docker_rak_linux
-#             - name: out_img
-            
+            - name: ns_buildInfo
             
