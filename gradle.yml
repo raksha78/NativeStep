@@ -31,6 +31,8 @@ pipelines:
           failOnScan: false
 #           configFileLocation: .
           autoPublishBuildInfo: true
+          forceXrayScan: true
+          failOnScan: false
 #           configFileName: gradle-art-config
 #           resolverRepo: jcenter
 #           deployerRepo: gradle-local
