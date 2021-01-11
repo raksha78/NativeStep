@@ -11,29 +11,29 @@ resources:
       buildName: npm_publish_1
       buildNumber: 1
       
-  - name: fileSpec_test_1
-    type: FileSpec
-    configuration:     
-      sourceArtifactory: art_v
-      pattern: "fileSpec_test/install.sh"
+#   - name: fileSpec_test_1
+#     type: FileSpec
+#     configuration:     
+#       sourceArtifactory: art_v
+#       pattern: "fileSpec_test/install.sh"
       
       
 pipelines:
   - name: npm_1
     configuration:
-      nodePool: win_2019
+      nodePool: rhel7
     steps:
       - name: build_npm_1
         type: NpmBuild
-        execution:
-          onComplete:
-            - cd dependencyState/resources/fileSpec_test_1
-            - ls .
+#         execution:
+#           onComplete:
+#             - cd dependencyState/resources/fileSpec_test_1
+#             - ls .
         configuration:
 #           repositoryName: npm-virtual
           resolverRepo: npm-virtual
           sourceLocation: .
-          npmArgs: npm install sax --force
+#           npmArgs: npm install sax --force
           inputResources:
             - name: npm_repo_1
 #             - name: fileSpec_test_1
