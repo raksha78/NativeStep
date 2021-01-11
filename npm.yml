@@ -19,7 +19,7 @@ resources:
 pipelines:
   - name: npm
     configuration:
-      nodePool: rhel8
+      nodePool: u20
     steps:
       - name: build_npm
         type: NpmBuild
