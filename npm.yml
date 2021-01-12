@@ -19,7 +19,7 @@ resources:
 pipelines:
   - name: npm
     configuration:
-      nodePool: u18dynamic
+      nodePool: u20dynamic
     steps:
       - name: build_npm
         type: NpmBuild
